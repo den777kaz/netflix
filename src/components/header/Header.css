@@ -1,0 +1,145 @@
+.header {
+    width: 100%;
+    height: 68px;
+    padding: 0 4%;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, .7) 10%, rgba(0, 0, 0, 0));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+
+}
+
+.header__left {
+    display: flex;
+    align-items: center;
+}
+
+.header__logo {
+    margin-right: 40px;
+}
+
+.header__logo img {
+    width: 130px;
+}
+
+.header__left nav ul {
+    display: flex;
+    align-items: center;
+}
+
+.header__left nav ul li {
+    list-style: none;
+    margin-right: 20px;
+}
+.header__left nav ul li a {
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-weight: normal;
+}
+.header__left nav ul li a.active {
+    font-weight: bold;
+    cursor: default;
+}
+
+.header__left nav ul li a:hover {
+    color: lightgray;
+}
+
+.header__left nav ul li a.active:hover {
+    color: white;
+}
+
+.header__left nav ul li:nth-last-child(1) {
+    margin-right: 0;
+}
+
+
+.header__right {
+    display: flex;
+    align-items: center;
+}
+
+.header__right > div {
+    margin-right: 20px;
+}
+.header__right > div:last-child {
+    margin-right: 0;
+}
+
+.header__search button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline-width: 0;
+}
+.header__search button img {
+    width: 25px;
+}
+
+.search__field {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+    will-change: auto;
+    border-radius: 5px;
+    width: 30px;
+    border: 1px solid rgba(255, 255, 255, 0);
+
+}
+
+.search__field.active {
+    width: 320px;
+    padding: 5px 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.search__field input {
+    flex: 1;
+    background-color: transparent;
+    outline-width: 0;
+    color: white;
+    font-size: 16px;
+    margin-left: 10px;
+    padding: 0 3px;
+    border: none;
+}
+
+.header__gift {
+    cursor: pointer;
+}
+.header__gift img {
+    width: 30px;
+}
+.header__notification {
+    cursor: pointer;
+}
+.header__notification img {
+    width: 25px;
+}
+
+.header__accountOption {
+    display: flex;
+    align-items: center;
+}
+
+.header__accountOption .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.header__accountOption .avatar img {
+    width: 100%;
+}
+
+.header__accountOption > img {
+    width: 30px;
+}

@@ -1,0 +1,38 @@
+.contentRows {
+    padding: 0 4%;
+    position: relative;
+    top: -300px;
+    z-index: 3;
+}
+.row__box {
+  margin-bottom: 200px;
+}
+.row__box > h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1.6rem;
+    font-weight: 500;
+}
+
+
+.slideRow {
+display: flex;
+}
+
+/*.slideRow__item {*/
+/*    min-width: 300px;*/
+/*    width: 30%;*/
+/*    max-width: 450px;*/
+/*    margin-right: 10px;*/
+/*    transition: all .3s ease-in-out;*/
+/*    flex-shrink: 0;*/
+/*    border-radius: 5px;*/
+/*    overflow: hidden;*/
+
+/*}*/
+/*.slideRow__item:hover {*/
+/*    transform: scale(1.1);*/
+/*}*/
+
+/*.slideRow__item img {*/
+/*   width: 100%;*/
+/*}*/
