@@ -21,10 +21,10 @@ const configV4 = axios.create({
 export const trendsAPI = {
 
     getDayTrendMovies(){
-        return configV3.get(`trending/movie/day${apiKey}&sort_by=popularity.desc&append_to_response=videos`)
+        return configV3.get(`trending/movie/day${apiKey}&sort_by=popularity.desc&append_to_response=genres`)
             // return axios.get(`https://api.themoviedb.org/3/movie/337401?api_key=6826fcad0fcb8f2c2a3501859daae5a7&append_to_response=videos`)
             .then(response=> {
-                // console.log(response)
+                console.log(response)
                 if(response.status === 200)  return response.data.results;
             })
     },

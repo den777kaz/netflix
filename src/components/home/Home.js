@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import Hero from "./hero/Hero";
 import {connect} from "react-redux";
 import {getDayTrendMovies} from "../../redux/reducers/trendsReducer";
@@ -8,7 +8,6 @@ import ContentRows from "./ContentRows/ContentRows";
 
 
 const Home = (props) => {
-
     let random = Math.floor(Math.random() * 10);
     useEffect(() => {
         props.getDayTrendMovies();

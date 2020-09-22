@@ -57,6 +57,7 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
 }
 
@@ -75,7 +76,7 @@
 }
 
 .option img {
-    width: 30px
+    width: 25px
 }
 
 .controls {
@@ -94,7 +95,9 @@
 .play:hover {
     background-color: lightgray;
 }
-
+.play img {
+    margin-left: 3px;
+}
 .rating {
     margin-bottom: 20px;
 }

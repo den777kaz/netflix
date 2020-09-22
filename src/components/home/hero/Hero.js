@@ -17,7 +17,7 @@ const Hero = (props) => {
 
     useEffect(() => {
         descLengthCheck(desc)
-    }, [])
+    }, [desc, props])
 
 
     const descLengthCheck = (text) => {

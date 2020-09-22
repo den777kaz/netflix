@@ -1,6 +1,10 @@
 import React from 'react';
 import style from './Card.module.css';
 import arrowDown from '../assets/images/downArrow.svg';
+import likeIcon from '../assets/images/likeIcon.svg';
+import dislikeIcon from '../assets/images/dislike.svg';
+import plusIcon from '../assets/images/plusIcon.svg';
+import playBlackIcon from '../assets/images/playBlackIcon.svg';
 
 const Card = (props) => {
     const imageUrl = "https://image.tmdb.org/t/p/w300";
@@ -23,16 +27,16 @@ const Card = (props) => {
                     <div className={style.options}>
                         <div className={style.controls}>
                         <span className={style.option + " " + style.play}>
-                            <img src={arrowDown} alt=""/>
+                            <img src={playBlackIcon} alt=""/>
                         </span>
                             <span className={style.option}>
-                            <img src={arrowDown} alt=""/>
+                            <img src={plusIcon} alt=""/>
                         </span>
                             <span className={style.option}>
-                            <img src={arrowDown} alt=""/>
+                            <img src={likeIcon} alt=""/>
                         </span>
                             <span className={style.option}>
-                            <img src={arrowDown} alt=""/>
+                            <img src={dislikeIcon} alt=""/>
                         </span>
                         </div>
                         <span className={style.option}>

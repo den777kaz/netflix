@@ -21,6 +21,7 @@ const Header = (props) => {
 
     const [showInput, setShowInput] = useState(false);
     const [inputValue, setInputValue] = useState("");
+    const [headerBg, setHeaderBg] = useState(false);
     const history = useHistory();
 
     useEffect(()=> {
@@ -29,14 +30,15 @@ const Header = (props) => {
 
     },[inputValue, props])
 
+    useEffect(()=> {
+        window.addEventListener("scroll", handleScroll);
+    }, [])
 
-    // useEffect(()=> {
-    //     console.log("HEADER")
-    //     if (showInput && inputValue === "") {
-    //         props.history.goBack();
-    //     }
-    // },[inputValue])
-
+    const handleScroll = ()=> {
+        if(window.pageYOffset > 30) {
+            setHeaderBg(true)
+        }else setHeaderBg(false)
+    }
 
     const showInputField = (e) => {
         e.preventDefault();
@@ -66,7 +68,7 @@ const Header = (props) => {
     }
 
     return (
-        <header className="header">
+        <header className={`header ${headerBg ? "active" : ""}`}>
             <div className="header__left">
                 <div className="header__logo">
                     <img src={logo}
