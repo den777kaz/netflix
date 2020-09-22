@@ -1,14 +1,22 @@
 import React from 'react';
-import style from './CardPrim.module.css';
+import style from './Card.module.css';
 import arrowDown from '../assets/images/downArrow.svg';
 
-const ContentItem = (props) => {
-    const imageUrl = "https://image.tmdb.org/t/p/w1280";
+const Card = (props) => {
+    const imageUrl = "https://image.tmdb.org/t/p/w300";
     return (
+
         <div className={style.card + " " + "card__maxW" }>
             <div className={style.item}>
                 <div className={style.image}>
-                    <img src={imageUrl + props.image} alt="dd"/>
+                    {
+                        props.image
+                            ? <img src={imageUrl + props.image} alt={props.title}/>
+                            : <img className={style.noImage} src={"https://www.ormistonhospital.co.nz/wp-content/uploads/2016/05/No-Image.jpg"} alt={props.title}/>
+                    }
+                    <div className={style.item__title}>
+                        <h3>{props.title}</h3>
+                    </div>
                 </div>
                 <div className={style.info}>
 
@@ -52,4 +60,4 @@ const ContentItem = (props) => {
     );
 };
 
-export default ContentItem;
+export default Card;

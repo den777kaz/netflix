@@ -106,3 +106,17 @@
 .genres ul li {
     list-style: none;
 }
+
+.noImage {
+    height: 200px;
+}
+
+.item__title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+}
+.item__title h3 {
+
+}

@@ -1,7 +1,6 @@
 import React from 'react';
-import SlideRow from "./row/SlideRow";
 import './ContentRows.css';
-import ContentItem from "../../../common/ContentItem";
+import Card from "../../../common/Card";
 import Carousel from 'react-elastic-carousel';
 
 
@@ -42,7 +41,12 @@ const ContentRows = (props) => {
                           breakPoints={breakPoints}
 
                 >
-                    {props.content.map(item => <ContentItem className={"card__maxWidth"} key={item.id} image={item.backdrop_path} /> )}
+                    {props.content.map(item => <Card
+                        className={"card__maxWidth"}
+                        key={item.id}
+                        image={item.backdrop_path}
+                        title={item.title}
+                    /> )}
                 </Carousel>
             </div>
 

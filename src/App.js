@@ -9,7 +9,7 @@ import Header from "./components/header/Header";
 import Home from "./components/home/Home";
 import Movies from "./components/movies/Movies";
 import Search from "./components/search/Search";
-import ContentItem from "./common/ContentItem";
+import Card from "./common/Card";
 import Footer from "./components/footer/Footer";
 
 
@@ -22,7 +22,7 @@ function App() {
                     <Route  path={"/home"} render={ ()=> <Home /> }/>
                     <Route  path={"/movies"} render={ ()=> <Movies /> }/>
                     <Route  path={"/search"} render={ ()=> <Search /> }/>
-                    {/*<Route exact path={"/test"} render={ ()=> <ContentItem /> }/>*/}
+                    {/*<Route exact path={"/test"} render={ ()=> <Card /> }/>*/}
                 </Switch>
                 <Footer />
 
