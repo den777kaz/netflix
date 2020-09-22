@@ -28,6 +28,7 @@
 
 .rec-slider-container, .rec-item-wrapper {
     overflow: initial !important;;
+    border-radius: 10px !important;
 }
 
 /*.rec-item-wrapper {*/
