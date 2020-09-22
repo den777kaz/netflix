@@ -3,17 +3,19 @@ import './Hero.css';
 import playIcon from '../../../assets/images/play-button.svg';
 import infoIcon from '../../../assets/images/info-icon.svg';
 import topIcon from '../../../assets/images/top10.svg';
+
 // import ReactPlayer from "react-player"
 
 
 const Hero = (props) => {
 
-    const {title, desc, bg, index} = props;
-
+    const {title, desc, bg, index, id} = props;
     let newText = "";
     const imageUrl = "https://image.tmdb.org/t/p/w1280";
 
     const [newDesc, setNewDesc] = useState(desc);
+
+
 
     useEffect(() => {
         descLengthCheck(desc)

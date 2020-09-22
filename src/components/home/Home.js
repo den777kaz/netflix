@@ -16,6 +16,7 @@ const Home = (props) => {
     const movie = props.results.filter((item, index) => index === random)
         .map(m => <Hero
             key={m.id}
+            id={m.id}
             index={random + 1}
             bg={m.backdrop_path}
             title={m.title}

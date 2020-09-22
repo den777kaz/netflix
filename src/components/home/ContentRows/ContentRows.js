@@ -3,6 +3,7 @@ import './ContentRows.css';
 import Card from "../../../common/Card";
 import Carousel from 'react-elastic-carousel';
 
+// https://github.com/sag1v/react-elastic-carousel
 
 const ContentRows = (props) => {
 

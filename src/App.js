@@ -9,6 +9,7 @@ import Header from "./components/header/Header";
 import Home from "./components/home/Home";
 import Movies from "./components/movies/Movies";
 import Search from "./components/search/Search";
+import Test from "./components/test";
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
                     <Route  path={"/home"} render={ ()=> <Home /> }/>
                     <Route  path={"/movies"} render={ ()=> <Movies /> }/>
                     <Route  path={"/search"} render={ ()=> <Search /> }/>
-                    {/*<Route exact path={"/test"} render={ ()=> <Card /> }/>*/}
+                    <Route exact path={"/test"} render={ ()=> <Test /> }/>
                 </Switch>
                 {/*<Footer />*/}
 
