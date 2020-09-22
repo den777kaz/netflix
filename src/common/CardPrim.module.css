@@ -3,7 +3,7 @@
     position: relative;
     margin-right: 20px;
     overflow: hidden;
-    transition: transform .5s;
+    transition: all .3s;
     min-width: 350px;
     max-width: 450px;
 }
@@ -12,6 +12,7 @@
     position: relative;
     top: 0;
     left: 0;
+    z-index: 1;
     background-color: #141414;
 }
 
@@ -44,10 +45,12 @@
 .card:hover {
     transform: translateY(-70px) scale(1.2);
     overflow: initial;
-    z-index: 3;
+    transition-delay:.5s;
+    z-index: 2;
 }
 .card:hover .info {
     opacity: 1;
+    transition-delay:.5s;
 }
 
 .options {

@@ -5,7 +5,7 @@ import arrowDown from '../assets/images/downArrow.svg';
 const ContentItem = (props) => {
     const imageUrl = "https://image.tmdb.org/t/p/w1280";
     return (
-        <div className={style.card}>
+        <div className={style.card + " " + "card__maxW" }>
             <div className={style.item}>
                 <div className={style.image}>
                     <img src={imageUrl + props.image} alt="dd"/>

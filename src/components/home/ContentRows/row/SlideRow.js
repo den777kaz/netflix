@@ -1,6 +1,7 @@
 import React from 'react';
 import './SlideRow.css';
 
+
 const SlideRow = ({image}) => {
         const imageUrl = "https://image.tmdb.org/t/p/w1280";
         const onMouseEnter =()=> {
@@ -8,10 +9,7 @@ const SlideRow = ({image}) => {
         }
 
     return (
-            <div
-
-                className="slideRow__item"
-            >
+            <div className="slideRow__item">
                 <img src={imageUrl + image} alt="dd"/>
             </div>
     );

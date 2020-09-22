@@ -1,38 +1,96 @@
 .contentRows {
-    padding: 0 4%;
+    padding: 50px 4%;
     position: relative;
     top: -300px;
     z-index: 3;
+    overflow: hidden;
 }
+
 .row__box {
-  margin-bottom: 200px;
+    margin-bottom: 200px;
 }
+
 .row__box > h3 {
-    font-size: 1.6rem;
-    margin-bottom: 1.6rem;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
     font-weight: 500;
 }
 
 
 .slideRow {
-display: flex;
+    display: flex;
 }
 
-/*.slideRow__item {*/
-/*    min-width: 300px;*/
-/*    width: 30%;*/
-/*    max-width: 450px;*/
-/*    margin-right: 10px;*/
-/*    transition: all .3s ease-in-out;*/
-/*    flex-shrink: 0;*/
-/*    border-radius: 5px;*/
-/*    overflow: hidden;*/
+.sliderRow {
+    /*overflow: initial;*/
+    position: relative;
+}
 
-/*}*/
-/*.slideRow__item:hover {*/
-/*    transform: scale(1.1);*/
-/*}*/
+.rec-slider-container, .rec-item-wrapper {
+    overflow: initial !important;;
+}
 
-/*.slideRow__item img {*/
-/*   width: 100%;*/
+/*.rec-item-wrapper {*/
+/*    margin-right: 20px;*/
 /*}*/
+.contentRows .card__maxW {
+    min-width: calc(100% - 5px);
+    padding-right: 5px;
+
+}
+
+
+/*arrows*/
+.rec-carousel > button {
+    position: absolute;
+    z-index: 100;
+    height: 100%;
+    border-radius: 0;
+    width: 4%;
+    font-size: 100px;
+}
+
+.rec-carousel .rec-arrow-right {
+    right: -4%;
+}
+
+.rec-carousel .rec-arrow-right:hover {
+    background-color: rgba(0, 0, 0, .2);
+    color: lightgray;
+}
+
+.rec-carousel button[disabled=disabled], button:disabled {
+    display: none;
+}
+
+.rec-carousel .rec-arrow-left {
+    left: -4%;
+}
+
+.rec-carousel > button:hover:enabled, .rec-carousel > button:focus:enabled {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/*pagination*/
+.rec-pagination {
+    position: absolute;
+    top: -60px;
+    right: 0;
+}
+
+.rec-pagination button {
+    width: 60px;
+    height: 5px;
+    border-radius: 2px;
+    box-shadow: none;
+    background-color: #141414;
+}
+
+.rec-pagination button:hover {
+    background-color: lightgray;
+    box-shadow: none;
+}
+
+.rec-pagination button.rec-dot_active {
+    background-color: lightgray;
+}

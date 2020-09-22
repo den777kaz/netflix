@@ -27,7 +27,7 @@ const Home = (props) => {
 
     return <section>
         {movie}
-        <ContentRows content={props.results}/>
+        <ContentRows content={props.results} title={"Popular on Netflix"}/>
     </section>
 
 };
