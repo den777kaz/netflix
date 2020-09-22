@@ -1,10 +1,20 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './ContentRows.css';
 import Card from "../../../common/Card";
 import Carousel from 'react-elastic-carousel';
 
 
 const ContentRows = (props) => {
+
+    const [hideSliderElem, setHideSliderElem] = useState(false);
+
+
+    useEffect(()=> {
+        console.log(window.screen.width)
+        if(window.screen.width > 800){
+            setHideSliderElem(true)
+        }
+    }, [])
 
     const breakPoints = [
         {
@@ -29,6 +39,9 @@ const ContentRows = (props) => {
         },
     ]
 
+
+
+
     return (
         <section className="contentRows">
 
@@ -39,6 +52,8 @@ const ContentRows = (props) => {
                           itemsToShow={5}
                           itemsToScroll={3}
                           breakPoints={breakPoints}
+                          pagination={hideSliderElem}
+                          showArrows={hideSliderElem}
 
                 >
                     {props.content.map(item => <Card
