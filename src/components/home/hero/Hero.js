@@ -11,6 +11,7 @@ const Hero = (props) => {
 
     const {title, desc, bg, index, id} = props;
     let newText = "";
+    let TextLength = 150;
     const imageUrl = "https://image.tmdb.org/t/p/w1280";
 
     const [newDesc, setNewDesc] = useState(desc);
@@ -18,15 +19,14 @@ const Hero = (props) => {
 
 
     useEffect(() => {
-        descLengthCheck(desc)
+        descLengthCheck(desc,TextLength)
     }, [desc, props])
 
 
-    const descLengthCheck = (text) => {
-        if (text.length >= 258) {
-            let length = 260;
-            newText = text.split("", length);
-            newText[length + 1] = ' ...';
+    const descLengthCheck = (text, TextLength) => {
+        if (text.length >= TextLength) {
+            newText = text.split("", TextLength);
+            newText[TextLength + 1] = ' ...';
             return setNewDesc(newText.join(''));
         }
     }

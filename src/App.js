@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import {
     BrowserRouter as Router,
@@ -10,9 +10,15 @@ import Home from "./components/home/Home";
 import Movies from "./components/movies/Movies";
 import Search from "./components/search/Search";
 import Test from "./components/test";
+import {connect} from "react-redux";
+import {getConfigData} from "./redux/reducers/configDataReducer";
 
 
-function App() {
+function App(props) {
+    useEffect(() =>{
+    props.getConfigData();
+    },[])
+
     return (
         <Router>
             <div className="App">
@@ -32,4 +38,4 @@ function App() {
     );
 }
 
-export default App;
+export default connect(null,{getConfigData})(App);

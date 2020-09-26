@@ -25,7 +25,7 @@ const Card = (props) => {
                 <div className={style.info}>
 
                     <div className={style.options}>
-                        <div className={style.controls}>
+
                         <span className={style.option + " " + style.play}>
                             <img src={playBlackIcon} alt=""/>
                         </span>
@@ -38,7 +38,7 @@ const Card = (props) => {
                             <span className={style.option}>
                             <img src={dislikeIcon} alt=""/>
                         </span>
-                        </div>
+
                         <span className={style.option}>
                         <img src={arrowDown} alt=""/>
                     </span>

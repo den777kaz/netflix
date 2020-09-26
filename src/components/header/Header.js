@@ -22,11 +22,12 @@ const Header = (props) => {
     const [showInput, setShowInput] = useState(false);
     const [inputValue, setInputValue] = useState("");
     const [headerBg, setHeaderBg] = useState(false);
-    const history = useHistory();
 
     useEffect(()=> {
 
-        if(inputValue)  props.getSearch(inputValue);
+        if(inputValue)  {
+            props.getSearch(inputValue);
+        }
 
     },[inputValue, props])
 
@@ -47,24 +48,31 @@ const Header = (props) => {
 
     const closeInputField = (e) => {
         e.preventDefault();
-        history.goBack()
+        // history.goBack()
+        props.history.push("/home");
         setShowInput(false)
         setInputValue("");
     }
 
 
     const hideInputField = () => {
-        if (inputValue === "") {
+        if (!inputValue) {
             setShowInput(false);
             setInputValue("");
-            history.goBack()
+            props.history.push("/home");
+            // history.goBack()
+
         }
     }
 
     const onChangeInput = (e) => {
         // e.preventDefault();
         setInputValue(e.currentTarget.value)
-        props.history.push("/search");
+        if(inputValue) {
+            props.history.push("/search");
+        }else props.history.push("/home");
+
+
     }
 
     return (

@@ -1,20 +1,32 @@
 import {trendsAPI} from "../../api/api";
 
-const SET_WEEK_TRENDS = "SET_WEEK_TRENDS";
+const SET_DAY_TRENDS = "SET_DAY_TRENDS";
+const SET_WEEK_TRENDS_MOVIE = "SET_WEEK_TRENDS_MOVIE";
+const SET_WEEK_TRENDS_TV = "SET_WEEK_TRENDS_TV";
 const SET_LOADING = "SET_LOADING";
 
 
 let initialState = {
-    all: [],
+    dayMovie: [],
+    weekMovie: [],
+    weekTv: [],
     isLoading: true,
 };
 
 const trendsReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case SET_WEEK_TRENDS:
+        case SET_DAY_TRENDS:
             return {
-               ...state, all: action.results
+               ...state, dayMovie: action.results
+            };
+        case SET_WEEK_TRENDS_TV:
+            return {
+                ...state, weekTv: action.results
+            };
+        case SET_WEEK_TRENDS_MOVIE:
+            return {
+                ...state, weekMovie: action.results
             };
 
         case SET_LOADING:
@@ -33,19 +45,35 @@ const trendsReducer = (state = initialState, action) => {
 // export const setProfileUsers = (profile) => ({type: SET_PROFILE_USERS, profile});
 // export const setStatus = (status) => ({type: SET_PROFILE_STATUS, status: status});
 
-export const setDayTrendMovies = (results) => ({type: SET_WEEK_TRENDS, results});
+const setDayTrendMovies = (results) => ({type: SET_DAY_TRENDS, results});
+const setWeekTrendTv = (results) => ({type: SET_WEEK_TRENDS_TV, results});
+const setWeekTrendMovie = (results) => ({type: SET_WEEK_TRENDS_MOVIE, results});
+
 
 //thunk- middleware
-export const getDayTrendMovies = () => {
+export const getHomeData = () => {
     return (dispatch) => {
         trendsAPI.getDayTrendMovies()
             .then(response => {
                 dispatch(setDayTrendMovies(response));
-                dispatch({type: SET_LOADING})
             })
             .catch(error => {
                 console.log("ERROR",error)
         })
+        trendsAPI.getWeekTrendTv()
+            .then(response => {
+                dispatch(setWeekTrendTv(response));
+            })
+            .catch(error => {
+                console.log("ERROR",error)
+        })
+        trendsAPI.getWeekTrendMovie()
+            .then(response => {
+                dispatch(setWeekTrendMovie(response));
+            })
+            .catch(error => {
+                console.log("ERROR",error)
+            })
     }
 };
 //

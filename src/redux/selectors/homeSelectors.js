@@ -1,9 +1,16 @@
 // import {createSelector} from "reselect";
 
 
-export const getMoviesInfo = (state) => {
+export const getDayMovies = (state) => {
+    return  state.trends.dayMovie;
+}
 
-    return  state.trends.all;
+export const getWeekMovies = (state) => {
+    return  state.trends.weekMovie;
+}
+
+export const getWeekTvs = (state) => {
+    return  state.trends.weekTv;
 }
 
 

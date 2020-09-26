@@ -1,19 +1,20 @@
 import React, {useEffect} from 'react';
 import Hero from "./hero/Hero";
 import {connect} from "react-redux";
-import {getDayTrendMovies} from "../../redux/reducers/trendsReducer";
-import {getMoviesInfo} from "../../redux/selectors/homeSelectors";
+import {getHomeData} from "../../redux/reducers/trendsReducer";
+import {getDayMovies, getWeekMovies, getWeekTvs} from "../../redux/selectors/homeSelectors";
 import ContentRows from "./ContentRows/ContentRows";
 
 
 
 const Home = (props) => {
+    const {dayMovies, weekMovies, weekTvs} = props;
     let random = Math.floor(Math.random() * 10);
     useEffect(() => {
-        props.getDayTrendMovies();
+        props.getHomeData();
     }, [])
 
-    const movie = props.results.filter((item, index) => index === random)
+    const movie = dayMovies.filter((item, index) => index === random)
         .map(m => <Hero
             key={m.id}
             id={m.id}
@@ -23,19 +24,22 @@ const Home = (props) => {
             desc={m.overview}
         />)
 
-    if(!props) return <div>...loading</div>;
+    // if(!props) return <div>...loading</div>;
 
     return <section>
         {movie}
-        <ContentRows content={props.results} title={"Popular on Netflix"}/>
+        <ContentRows content={weekTvs} title={"Top TV shows this week"}/>
+        <ContentRows content={weekMovies} title={"Top Movies this week"}/>
     </section>
 
 };
 
 const mapStateToProps = (state) => ({
-    results: getMoviesInfo(state),
-    isLoading: state.trends.isLoading
+    dayMovies: getDayMovies(state),
+    weekMovies: getWeekMovies(state),
+    weekTvs: getWeekTvs(state),
+    // isLoading: state.trends.isLoading
 })
 
-export default connect(mapStateToProps, {getDayTrendMovies})(Home);
+export default connect(mapStateToProps, {getHomeData})(Home);
 

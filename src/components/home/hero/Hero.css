@@ -1,9 +1,11 @@
 .hero {
     width: 100%;
-    height: 80vh;
-    min-height: 1000px;
-    max-height: 1200px;
+    /*height: 80vh;*/
+    /*min-height: 1000px;*/
+    /*max-height: 1200px;*/
+    padding-top: 56.25%;
     position: relative;
+    z-index: 0;
 }
 .hero:before {
     content: "";
@@ -28,7 +30,7 @@
 
 .hero__bg {
     position: absolute;
-    opacity: 0.1;
+    /*opacity: 0.1;*/
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -42,21 +44,26 @@
     z-index: 2;
     display: flex;
     flex-direction: column;
+    top: 0;
     left: 4%;
-    top: 100px;
-    padding: 0 1rem 0 0;
-    width: 620px;
+    padding-top: 23%;
+    width: 40%;
 }
 .hero__info > div {
-    margin-bottom: 20px;
+    margin-bottom: 1.5vw;
 }
 .info__title {
-    min-height: 300px;
+    /*min-height: 300px;*/
     display: flex;
     align-items: flex-end;
+    position: relative;
 }
 .info__title h1 {
-    font-size: calc(3rem + 2vw);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /*font-size: calc(2rem + 2vw);*/
+    font-size: 4vw;
     font-weight: bold;
     line-height: 100%;
     letter-spacing: 3px;
@@ -65,7 +72,7 @@
 
 .info__subtitle {
     display: flex;
-    min-height: 45px;
+    align-items: center;
 }
 .info__subtitle span {
     display: flex;
@@ -73,29 +80,29 @@
     margin-right: 15px;
 }
 .info__subtitle span img {
-    width: 40px;
+    width: 2.2vw;
 }
 .info__subtitle h3 {
-    font-size: 2rem;
+    font-size: 2vw;
     font-weight: 500;
 }
 .info__description {
     overflow: hidden;
-    min-height: 140px;
+    /*min-height: 140px;*/
 }
 .info__description p {
-    font-size: 1.5rem;
+    font-size: 1.6vw;
 }
 
 .info__action {
     display: flex;
-    margin-top: 20px;
+    margin-top: 1vw;
 }
 .info__action button {
     margin-right: 30px;
-    padding: 14px 33px;
-    font-size: 1.5rem;
-    min-width: 160px;
+    padding: 1vw 3vw;
+    font-size: 1.5vw;
+    /*min-width: 160px;*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -112,7 +119,7 @@
     align-items: center;
 }
 .info__action button span img {
-    width: 30px;
+    width: 2vw;
 }
 .info__action .btn-info {
     color: white;
@@ -126,5 +133,5 @@
     background-color: lightgray;
 }
 .info__action .btn-info span img {
-    width: 35px;
+    width: 2vw;
 }

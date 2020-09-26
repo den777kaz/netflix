@@ -3,3 +3,25 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.search__item {
+    position: relative;
+    margin-bottom: 10px;
+    overflow: hidden;
+    width: calc(20% - 10px);
+    margin-right: 10px;
+    padding: 15% 0;
+    cursor: pointer;
+}
+.search__item:nth-child(5n) {
+    margin-right: 0;
+}
+.search__item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+
+}

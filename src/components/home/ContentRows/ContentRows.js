@@ -20,23 +20,23 @@ const ContentRows = (props) => {
     const breakPoints = [
         {
             width: 400,
-            itemsToShow: 1,
-            itemsToScroll: 1
+            itemsToShow: 2,
+            itemsToScroll: 2
         },
         {
             width: 600,
             itemsToShow: 3,
-            itemsToScroll: 3
+            itemsToScroll: 2
         },
         {
             width: 1000,
             itemsToShow: 3,
-            itemsToScroll: 3
+            itemsToScroll: 2
         },
         {
             width: 1200,
             itemsToShow: 4,
-            itemsToScroll: 4
+            itemsToScroll: 3
         },
     ]
 
@@ -61,7 +61,8 @@ const ContentRows = (props) => {
                         className={"card__maxWidth"}
                         key={item.id}
                         image={item.backdrop_path}
-                        title={item.title}
+                        // title={item.media_type = "movie" ? item.title : item.original_name}
+                        title={item.media_type === "movie" ? item.title : item.original_name}
                     /> )}
                 </Carousel>
             </div>
