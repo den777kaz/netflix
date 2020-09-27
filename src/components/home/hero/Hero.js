@@ -20,7 +20,7 @@ const Hero = (props) => {
 
     useEffect(() => {
         descLengthCheck(desc,TextLength)
-    }, [desc, props])
+    }, [TextLength, desc])
 
 
     const descLengthCheck = (text, TextLength) => {
@@ -30,7 +30,6 @@ const Hero = (props) => {
             return setNewDesc(newText.join(''));
         }
     }
-
 
     return (
         <div className="hero">
