@@ -1,0 +1,15 @@
+.movies {
+    padding: 0 4%;
+    width: 100%;
+}
+.movies-box {
+    display: flex;
+    padding-top: 100px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.movies-box .card {
+    flex: 0 0 24%;
+    margin: 0 0 10px 0;
+}

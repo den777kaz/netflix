@@ -72,3 +72,15 @@ export const searchAPI = {
     },
 
 };
+
+export const moviesAPI = {
+
+    getPopularMovies(page=1){
+        return configV3.get(`movie/popular${apiKey}&language=en-US&page=${page}`)
+            .then(response=> {
+                console.log("POPULAR",response)
+                if(response.status === 200)  return response.data.results;
+            })
+    },
+
+};

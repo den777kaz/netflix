@@ -12,6 +12,10 @@
     margin-right: 10px;
     padding: 15% 0;
     cursor: pointer;
+    border-radius: 10px;
+}
+.search__item:hover {
+
 }
 .search__item:nth-child(5n) {
     margin-right: 0;

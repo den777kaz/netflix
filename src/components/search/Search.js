@@ -13,8 +13,8 @@ const Search = ({results, isLoading, imageConfig }) => {
 
 
     const handleClick = (id) => {
-        // let target = e.currentTarget;
-        console.log(id)
+
+
     }
 
     if(isLoading) {

@@ -2,16 +2,16 @@ import React, {useEffect, useState} from 'react';
 import './ContentRows.css';
 import Card from "../../../common/Card";
 import Carousel from 'react-elastic-carousel';
+import {connect} from "react-redux";
+import {getGenres} from "../../../redux/selectors/homeSelectors";
+import {getDetails} from "../../../redux/reducers/trendsReducer";
 
 // https://github.com/sag1v/react-elastic-carousel
 
 const ContentRows = (props) => {
-
     const [hideSliderElem, setHideSliderElem] = useState(false);
 
-
     useEffect(()=> {
-        console.log(window.screen.width)
         if(window.screen.width > 800){
             setHideSliderElem(true)
         }
@@ -41,7 +41,9 @@ const ContentRows = (props) => {
     ]
 
 
-
+const handleClick = (id)=> {
+       props.getDetails(id);
+}
 
     return (
         <section className="contentRows">
@@ -60,8 +62,10 @@ const ContentRows = (props) => {
                     {props.content.map(item => <Card
                         className={"card__maxWidth"}
                         key={item.id}
+                        onClick={handleClick}
+                        id={item.id}
                         image={item.backdrop_path}
-                        // title={item.media_type = "movie" ? item.title : item.original_name}
+                        genres={item.genre_ids}
                         title={item.media_type === "movie" ? item.title : item.original_name}
                     /> )}
                 </Carousel>
@@ -71,4 +75,4 @@ const ContentRows = (props) => {
     );
 };
 
-export default ContentRows;
+export default connect(null, {getDetails})(ContentRows);

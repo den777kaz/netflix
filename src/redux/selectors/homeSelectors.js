@@ -14,6 +14,10 @@ export const getWeekTvs = (state) => {
 }
 
 
+export const getGenres = (state,id) => {
+    return  state.configData.genres;
+}
+
 
 
 // reselect selector
