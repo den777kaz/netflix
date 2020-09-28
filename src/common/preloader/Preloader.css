@@ -8,10 +8,7 @@
     align-items: center;
 }
 
-.preloader h1 {
-    font-size: 4rem;
-}
-.loader.hidden {
-    animation: fadeOut 1s;
-    animation-fill-mode: forwards;
-}
+/*.loader.hidden {*/
+/*    animation: fadeOut 1s;*/
+/*    animation-fill-mode: forwards;*/
+/*}*/
