@@ -33,7 +33,6 @@ const Home = (props) => {
     if(isLoading) return <Preloader />;
 
     return <section>
-
         {movie}
         <ContentRows content={weekTvs} title={"Top TV shows this week"}/>
         <ContentRows content={weekMovies} title={"Top Movies this week"}/>

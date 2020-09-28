@@ -20,11 +20,10 @@ const Movies = ({moviesData,getMoviesData,genresData, resetMovies,isLoading}) =>
         resetMovies();
         getMoviesData(name)
     }
-
     return (
         <section className={"movies"}>
             <MovieTab onClick={handleTabClick} />
-            {isLoading && <Preloader />}
+            {isLoading && <Preloader/>}
            <div className="movies-box">
                {moviesData && moviesData.map(m => <Card
                    key={m.id}

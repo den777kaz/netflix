@@ -49,6 +49,21 @@
     padding-top: 23%;
     width: 40%;
 }
+
+@media screen and (max-width: 1250px) {
+    .hero__info {
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .hero__info {
+        width: 50%;
+    }
+}
+
+
+
 .hero__info > div {
     margin-bottom: 1.5vw;
 }
@@ -63,7 +78,7 @@
     bottom: 0;
     left: 0;
     /*font-size: calc(2rem + 2vw);*/
-    font-size: 4vw;
+    font-size: min(5vw, 3rem);
     font-weight: bold;
     line-height: 100%;
     letter-spacing: 3px;
@@ -83,7 +98,7 @@
     width: 2.2vw;
 }
 .info__subtitle h3 {
-    font-size: 2vw;
+    font-size: min(2.5vw, 2rem);
     font-weight: 500;
 }
 .info__description {
@@ -91,7 +106,7 @@
     /*min-height: 140px;*/
 }
 .info__description p {
-    font-size: 1.6vw;
+    font-size: min(1.6vw, 1.6rem);
 }
 
 .info__action {
@@ -99,9 +114,9 @@
     margin-top: 1vw;
 }
 .info__action button {
-    margin-right: 30px;
-    padding: 1vw 3vw;
-    font-size: 1.5vw;
+    margin-right: 3%;
+    padding: 1vw 2vw;
+    font-size: min(1.5vw,2rem);
     /*min-width: 160px;*/
     display: flex;
     justify-content: center;
@@ -113,6 +128,7 @@
     transition: background-color .4s ease;
     cursor: pointer;
 }
+
 .info__action button span {
     margin-right: 10px;
     display: flex;
