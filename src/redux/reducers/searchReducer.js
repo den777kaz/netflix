@@ -36,9 +36,12 @@ export const resetSearch = () => ({type: RESET_SEARCH, results: null})
 export const getSearch = (value) => {
     return (dispatch) => {
       searchAPI.getSearchResults(value)
-          .then(results => {
-              dispatch({type: SET_SEARCH_RESULTS, results: results.results})
+          .then(response => {
+              if(response.status === 200) {
+                  dispatch({type: SET_SEARCH_RESULTS, results: response.data.results});
+              }
           })
+          .catch(error => console.log(error))
     }
 };
 

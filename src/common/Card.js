@@ -5,18 +5,19 @@ import likeIcon from '../assets/images/likeIcon.svg';
 import dislikeIcon from '../assets/images/dislike.svg';
 import plusIcon from '../assets/images/plusIcon.svg';
 import playBlackIcon from '../assets/images/playBlackIcon.svg';
-import {connect} from "react-redux";
-import {getGenres} from "../redux/selectors/homeSelectors";
 
 const Card = (props) => {
+
+    const{genreData, genreIds, id, title, image, onClick} = props;
+
     const [genres, setGenres] = useState([]);
+
     const imageUrl = "https://image.tmdb.org/t/p/w300";
 
     useEffect(() => {
-        if(props.genresData && props.genres){
-            getGenres(props.genres,props.genresData)
+        if(genreData && genreIds){
+            getGenres(genreIds,genreData)
         }
-
     }, [setGenres, props])
 
     const getGenres = (genreIds, genreData) => {
@@ -37,14 +38,14 @@ const Card = (props) => {
             <div className={style.item}>
                 <div className={style.image}>
                     {
-                        props.image
-                            ? <img src={imageUrl + props.image} alt={props.title}/>
+                        image
+                            ? <img src={imageUrl + image} alt={title}/>
                             : <img className={style.noImage}
                                    src={"https://www.ormistonhospital.co.nz/wp-content/uploads/2016/05/No-Image.jpg"}
                                    alt={props.title}/>
                     }
                     <div className={style.item__title}>
-                        <h3>{props.title}</h3>
+                        <h3>{title}</h3>
                     </div>
                 </div>
                 <div className={style.info}>
@@ -66,7 +67,7 @@ const Card = (props) => {
                             <img src={dislikeIcon} alt=""/>
                         </span>
                         <span className={style.option} onClick={e => {
-                            props.onClick(props.id)
+                            onClick(id)
                         }}>
                             <span className={style.tooltip}>More Info</span>
                         <img src={arrowDown} alt=""/>
@@ -92,7 +93,5 @@ const Card = (props) => {
 
     );
 };
-const mapStateToProps = (state) => ({
-    genresData: getGenres(state)
-})
-export default connect(mapStateToProps)(Card);
+
+export default Card;

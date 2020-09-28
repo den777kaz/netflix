@@ -64,21 +64,24 @@ export const getHomeData = () => {
     return (dispatch) => {
         trendsAPI.getDayTrendMovies()
             .then(response => {
-                dispatch(setDayTrendMovies(response));
+                if(response.status === 200)
+                    dispatch(setDayTrendMovies(response.data.results))
             })
             .catch(error => {
                 console.log("ERROR", error)
             })
         trendsAPI.getWeekTrendTv()
             .then(response => {
-                dispatch(setWeekTrendTv(response));
+                if(response.status === 200)
+                    dispatch(setWeekTrendTv(response.data.results));
             })
             .catch(error => {
                 console.log("ERROR", error)
             })
         trendsAPI.getWeekTrendMovie()
             .then(response => {
-                dispatch(setWeekTrendMovie(response));
+                if(response.status === 200)
+                    dispatch(setWeekTrendMovie(response.data.results));
             })
             .catch(error => {
                 console.log("ERROR", error)

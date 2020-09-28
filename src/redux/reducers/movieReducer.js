@@ -37,14 +37,17 @@ const moviesReducer = (state = initialState, action) => {
     }
 };
 
-export const resetMovies = () => ({type:RESET_MOVIES})
+export const resetMovies = () => ({type:RESET_MOVIES});
+        const setMovies = (results) => ({type:SET_POP_MOVIES , results})
 
 //thunk- middleware
 export const getMoviesData = (name) => {
     return (dispatch) => {
         moviesAPI.getPopularMovies(name)
-            .then(results => {
-                dispatch({type:SET_POP_MOVIES , results})
+            .then(response => {
+                if(response.status === 200) {
+                    dispatch(setMovies(response.data.results));
+                }
             })
             .catch(error => {
                 console.log("ERROR", error)

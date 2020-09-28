@@ -3,8 +3,8 @@ import './ContentRows.css';
 import Card from "../../../common/Card";
 import Carousel from 'react-elastic-carousel';
 import {connect} from "react-redux";
-import {getGenres} from "../../../redux/selectors/homeSelectors";
 import {getDetails} from "../../../redux/reducers/trendsReducer";
+import {getGenresMovies, getGenresTvs} from "../../../redux/selectors/homeSelectors";
 
 // https://github.com/sag1v/react-elastic-carousel
 
@@ -65,8 +65,17 @@ const handleClick = (id)=> {
                         onClick={handleClick}
                         id={item.id}
                         image={item.backdrop_path}
-                        genres={item.genre_ids}
-                        title={item.media_type === "movie" ? item.title : item.original_name}
+                        genreData={
+                            item.media_type === "movie"
+                            ? props.genresDataMovie
+                            : props.genresDataTv
+                        }
+                        genreIds={item.genre_ids}
+                        title={
+                            item.media_type === "movie"
+                            ? item.title
+                            : item.original_name
+                        }
                     /> )}
                 </Carousel>
             </div>
@@ -74,5 +83,9 @@ const handleClick = (id)=> {
         </section>
     );
 };
+const mapStateToProps = (state) => ({
+    genresDataMovie: getGenresMovies(state),
+    genresDataTv: getGenresTvs(state),
 
-export default connect(null, {getDetails})(ContentRows);
+})
+export default connect(mapStateToProps, {getDetails})(ContentRows);

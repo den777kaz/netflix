@@ -23,41 +23,24 @@ const configV4 = axios.create({
 export const configDataAPI = {
     configImages(){
         return configV3.get(`configuration${apiKey}`)
-            // return axios.get(`https://api.themoviedb.org/3/movie/337401?api_key=6826fcad0fcb8f2c2a3501859daae5a7&append_to_response=videos`)
-            .then(response=> {
-                if(response.status === 200)  return response.data.images;
-            })
     },
-    configGenres(){
+    configGenresMovies(){
         return configV3.get(`genre/movie/list${apiKey}`)
-            // return axios.get(`https://api.themoviedb.org/3/movie/337401?api_key=6826fcad0fcb8f2c2a3501859daae5a7&append_to_response=videos`)
-            .then(response=> {
-
-                if(response.status === 200)  return response.data.genres;
-
-            })
     },
-
+    configGenresTvs(){
+        return configV3.get(`genre/tv/list${apiKey}`)
+    },
 };
 
 export const trendsAPI = {
     getDayTrendMovies(){
         return configV3.get(`trending/movie/day${apiKey}&sort_by=popularity.desc&append_to_response=genres`)
-            .then(response=> {
-                if(response.status === 200)  return response.data.results;
-            })
     },
     getWeekTrendTv(){
         return configV3.get(`trending/tv/week${apiKey}&sort_by=popularity.desc&append_to_response=genres`)
-            .then(response=> {
-                if(response.status === 200)  return response.data.results;
-            })
     },
     getWeekTrendMovie(){
         return configV3.get(`trending/movie/week${apiKey}&sort_by=popularity.desc&append_to_response=genres`)
-            .then(response=> {
-                if(response.status === 200)  return response.data.results;
-            })
     },
 
 };
@@ -66,10 +49,7 @@ export const searchAPI = {
 
     getSearchResults(value){
         return configV4.get(`search/multi${apiKey}&language=en-US&query=${value}`)
-            .then(response=> {
-                if(response.status === 200)  return response.data;
-            })
-    },
+    }
 
 };
 
@@ -77,10 +57,6 @@ export const moviesAPI = {
 
     getPopularMovies(sort= "popular", page=1){
         return configV3.get(`movie/${sort}${apiKey}&language=en-US&page=${page}`)
-            .then(response=> {
-                console.log("POPULAR",response)
-                if(response.status === 200)  return response.data.results;
-            })
     },
 
 };

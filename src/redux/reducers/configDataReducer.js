@@ -1,12 +1,14 @@
-import {configDataAPI, searchAPI} from "../../api/api";
+import {configDataAPI} from "../../api/api";
 
 const SET_IMAGES_CONFIG = "SET_IMAGES_CONFIG";
-const SET_GENRES_CONFIG = "SET_GENRES_CONFIG";
+const SET_GENRES_CONFIG_MOVIE = "SET_GENRES_CONFIG_MOVIE";
+const SET_GENRES_CONFIG_TV = "SET_GENRES_CONFIG_TV";
 const SET_LOADING = "SET_LOADING";
 
 let initialState = {
     images: [],
-    genres: [],
+    genresMovies: [],
+    genresTvs: [],
 };
 
 const configDataReducer = (state = initialState, action) => {
@@ -16,9 +18,13 @@ const configDataReducer = (state = initialState, action) => {
             return {
                 ...state, images: action.results
             };
-        case SET_GENRES_CONFIG:
+        case SET_GENRES_CONFIG_MOVIE:
             return {
-                ...state, genres: action.results
+                ...state, genresMovies: action.results
+            };
+        case SET_GENRES_CONFIG_TV:
+            return {
+                ...state, genresTvs: action.results
             };
 
         case SET_LOADING:
@@ -32,17 +38,27 @@ const configDataReducer = (state = initialState, action) => {
     }
 };
 
-// export const resetSearch = () => ({type: RESET_SEARCH, results: null})
 export const getConfigData = () => {
     return (dispatch) => {
         configDataAPI.configImages()
-            .then(results => {
-                dispatch({type: SET_IMAGES_CONFIG, results})
+            .then(response => {
+                if(response.status === 200)  dispatch({type: SET_IMAGES_CONFIG, results:response.data.images});
             })
-        configDataAPI.configGenres()
-            .then(results => {
-                dispatch({type: SET_GENRES_CONFIG, results})
+            .catch(err => console.log(err))
+
+        configDataAPI.configGenresMovies()
+            .then(response => {
+                if(response.status === 200)
+                    dispatch({type: SET_GENRES_CONFIG_MOVIE, results:response.data.genres});
             })
+            .catch(err => console.log(err))
+
+        configDataAPI.configGenresTvs()
+            .then(response => {
+                if(response.status === 200)
+                    dispatch({type: SET_GENRES_CONFIG_TV, results:response.data.genres});
+            })
+            .catch(err => console.log(err))
     }
 };
 

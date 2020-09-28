@@ -14,8 +14,11 @@ export const getWeekTvs = (state) => {
 }
 
 
-export const getGenres = (state,id) => {
-    return  state.configData.genres;
+export const getGenresMovies = (state) => {
+    return  state.configData.genresMovies;
+}
+export const getGenresTvs = (state) => {
+    return  state.configData.genresTvs;
 }
 
 
