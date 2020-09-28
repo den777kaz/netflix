@@ -5,7 +5,7 @@ import {getMoviesData, resetMovies} from "../../redux/reducers/movieReducer";
 import './Movies.css';
 import {getGenres} from "../../redux/selectors/homeSelectors";
 import MovieTab from "./tabs/movieTab";
-import Preloader from "../../common/reloader/Preloader";
+import Preloader from "../../common/preloader/Preloader";
 
 const Movies = ({moviesData,getMoviesData,genresData, resetMovies,isLoading}) => {
 

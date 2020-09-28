@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {getHomeData, resetTrends} from "../../redux/reducers/trendsReducer";
 import {getDayMovies, getWeekMovies, getWeekTvs} from "../../redux/selectors/homeSelectors";
 import ContentRows from "./ContentRows/ContentRows";
-import Preloader from "../../common/reloader/Preloader";
+import Preloader from "../../common/preloader/Preloader";
 
 
 
