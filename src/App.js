@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import './App.css';
 import {
     BrowserRouter as Router,
+    Redirect,
     Switch,
     Route,
 } from "react-router-dom";
@@ -24,6 +25,7 @@ function App(props) {
             <div className="App">
                 <Header/>
                 <Switch>
+                    <Route exact path={"/"} render={ ()=> <Redirect to={"/home"} /> }/>
                     <Route  path={"/home"} render={ ()=> <Home /> }/>
                     <Route  path={"/movies"} render={ ()=> <Movies /> }/>
                     <Route  path={"/search"} render={ ()=> <Search /> }/>
