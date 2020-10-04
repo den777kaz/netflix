@@ -13,17 +13,17 @@
 
 .details__wrapper > div {
     margin-top: 100px;
-    padding: 20px;
+
     border-radius: 10px;
     width: 60%;
-    background-color: #141414;
+    background-color: black;
     max-height: calc(100vh - 200px);
     overflow-y: auto;
 }
 
 .details__image {
     width: 100%;
-    padding-top: 56.5%;
+    padding-top: 56.25%;
     position: relative;
 }
 .details__image img {
@@ -33,4 +33,9 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: opacity 2s;
+    z-index: 12;
+}
+.details__image img.hide {
+    opacity: 0;
 }

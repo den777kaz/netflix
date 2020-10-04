@@ -17,7 +17,7 @@ import DetailsModal from "../../components/detailsModal/DetailsModal";
 const Home = (props) => {
     const {
         dayMovies, weekMovies, weekTvs,
-        isLoading, genresDataMovie, genresDataTv, details
+        isLoading, genresDataMovie, genresDataTv, details, video
     } = props;
 
 
@@ -76,6 +76,7 @@ const Home = (props) => {
             poster={details.poster_path}
             title={details.title}
             desc={details.overview}
+            video={video}
         /> }
         {movie}
         {RowTitles.map((row, index) => <ContentRows
@@ -100,7 +101,8 @@ const mapStateToProps = (state) => ({
     isLoading: state.trends.isLoading,
     genresDataMovie: getGenresMovies(state),
     genresDataTv: getGenresTvs(state),
-    details: state.trends.details
+    details: state.trends.details,
+    video: state.trends.video
 })
 
 export default connect(mapStateToProps, {getHomeData, resetTrends, getDetails})(Home);

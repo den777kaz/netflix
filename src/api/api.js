@@ -65,5 +65,8 @@ export const getDetailsAPI = {
     getMovieDetails(id){
         return configV3.get(`movie/${id}${apiKey}&language=en-US`)
     },
+    getMovieVideos(id){
+        return configV3.get(`movie/${id}/videos${apiKey}&language=en-US&append_to_response=videos`)
+    },
 
 };

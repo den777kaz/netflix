@@ -6,13 +6,15 @@ const SET_WEEK_TRENDS_TV = "SET_WEEK_TRENDS_TV";
 const RESET_TRENDS = "RESET_TRENDS";
 const SET_LOADING = "SET_LOADING";
 const SET_DETAILS = "SET_DETAILS";
+const SET_VIDEOS = "SET_VIDEOS";
 
 let initialState = {
     dayMovie: [],
     weekMovie: [],
     weekTv: [],
     isLoading: true,
-    details: []
+    details: [],
+    video: []
 };
 
 const trendsReducer = (state = initialState, action) => {
@@ -42,6 +44,11 @@ const trendsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 details: action.payload
+            };
+        case SET_VIDEOS:
+            return {
+                ...state,
+                video: action.payload
             };
         case RESET_TRENDS:
             return {
@@ -101,8 +108,17 @@ export const getDetails = (id) => {
         getDetailsAPI.getMovieDetails(id)
             .then(response => {
                 if (response.status === 200)
-                    console.log(response.data)
-                dispatch(({type: SET_DETAILS, payload: response.data}));
+                    // console.log(response.data)
+                    dispatch(({type: SET_DETAILS, payload: response.data}));
+            })
+            .catch(error => {
+                console.log("ERROR", error)
+            })
+        getDetailsAPI.getMovieVideos(id)
+            .then(response => {
+                if (response.status === 200)
+                    console.log(response.data.results)
+                dispatch(({type: SET_VIDEOS, payload: response.data.results[0].key}));
             })
             .catch(error => {
                 console.log("ERROR", error)
