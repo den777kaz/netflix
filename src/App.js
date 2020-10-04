@@ -7,19 +7,19 @@ import {
     Route,
 } from "react-router-dom";
 import Header from "./components/header/Header";
-import Home from "./components/home/Home";
-import Movies from "./components/movies/Movies";
-import Search from "./components/search/Search";
+import Home from "./pages/home/Home";
+import Movies from "./pages/movie/Movies";
+import Search from "./pages/search/Search";
 import Test from "./components/test";
 import {connect} from "react-redux";
 import {getConfigData} from "./redux/reducers/configDataReducer";
+
 
 
 function App(props) {
     useEffect(() =>{
     props.getConfigData();
     },[])
-
     return (
         <Router>
             <div className="App">

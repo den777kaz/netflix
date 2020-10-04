@@ -1,10 +1,11 @@
-import {trendsAPI} from "../../api/api";
+import {getDetailsAPI, trendsAPI} from "../../api/api";
 
 const SET_DAY_TRENDS = "SET_DAY_TRENDS";
 const SET_WEEK_TRENDS_MOVIE = "SET_WEEK_TRENDS_MOVIE";
 const SET_WEEK_TRENDS_TV = "SET_WEEK_TRENDS_TV";
 const RESET_TRENDS = "RESET_TRENDS";
 const SET_LOADING = "SET_LOADING";
+const SET_DETAILS = "SET_DETAILS";
 
 let initialState = {
     dayMovie: [],
@@ -37,6 +38,11 @@ const trendsReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false
             };
+        case SET_DETAILS:
+            return {
+                ...state,
+                details: action.payload
+            };
         case RESET_TRENDS:
             return {
                 ...state,
@@ -64,7 +70,7 @@ export const getHomeData = () => {
     return (dispatch) => {
         trendsAPI.getDayTrendMovies()
             .then(response => {
-                if(response.status === 200)
+                if (response.status === 200)
                     dispatch(setDayTrendMovies(response.data.results))
             })
             .catch(error => {
@@ -72,7 +78,7 @@ export const getHomeData = () => {
             })
         trendsAPI.getWeekTrendTv()
             .then(response => {
-                if(response.status === 200)
+                if (response.status === 200)
                     dispatch(setWeekTrendTv(response.data.results));
             })
             .catch(error => {
@@ -80,7 +86,7 @@ export const getHomeData = () => {
             })
         trendsAPI.getWeekTrendMovie()
             .then(response => {
-                if(response.status === 200)
+                if (response.status === 200)
                     dispatch(setWeekTrendMovie(response.data.results));
             })
             .catch(error => {
@@ -92,6 +98,15 @@ export const getHomeData = () => {
 export const getDetails = (id) => {
     return (dispatch) => {
 
+        getDetailsAPI.getMovieDetails(id)
+            .then(response => {
+                if (response.status === 200)
+                    console.log(response.data)
+                dispatch(({type: SET_DETAILS, payload: response.data}));
+            })
+            .catch(error => {
+                console.log("ERROR", error)
+            })
     }
 }
 

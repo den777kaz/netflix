@@ -1,15 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import './Hero.css';
-import playIcon from '../../../assets/images/play-button.svg';
-import infoIcon from '../../../assets/images/info-icon.svg';
-import topIcon from '../../../assets/images/top10.svg';
+import playIcon from '../../assets/images/play-button.svg';
+import infoIcon from '../../assets/images/info-icon.svg';
+import topIcon from '../../assets/images/top10.svg';
 
 // import ReactPlayer from "react-player"
 
 
 const Hero = (props) => {
 
-    const {title, desc, bg, index, id} = props;
+    const {title, desc, bg, index,id, onClick} = props;
     let newText = "";
     let TextLength = 150;
     const imageUrl = "https://image.tmdb.org/t/p/w1280";
@@ -54,7 +54,9 @@ const Hero = (props) => {
                     </button>
                     <button
                         type="button"
-                        className="btn-info">
+                        className="btn-info"
+                        onClick={e=>(onClick(id))}
+                    >
                         <span><img src={infoIcon} alt="info icon"/></span> More Info
                     </button>
                 </div>

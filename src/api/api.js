@@ -60,3 +60,10 @@ export const moviesAPI = {
     },
 
 };
+export const getDetailsAPI = {
+
+    getMovieDetails(id){
+        return configV3.get(`movie/${id}${apiKey}&language=en-US`)
+    },
+
+};

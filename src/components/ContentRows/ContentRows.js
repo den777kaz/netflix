@@ -1,10 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './ContentRows.css';
-import Card from "../../../common/Card";
+import Card from "../../common/Card";
 import Carousel from 'react-elastic-carousel';
-import {connect} from "react-redux";
-import {getDetails} from "../../../redux/reducers/trendsReducer";
-import {getGenresMovies, getGenresTvs} from "../../../redux/selectors/homeSelectors";
 
 // https://github.com/sag1v/react-elastic-carousel
 
@@ -41,14 +38,8 @@ const ContentRows = (props) => {
     ]
 
 
-const handleClick = (id)=> {
-       props.getDetails(id);
-}
-
     return (
         <section className="contentRows">
-
-
             <div className={"row__box"}>
                 <h3>{props.title}</h3>
                 <Carousel className="sliderRow"
@@ -62,7 +53,7 @@ const handleClick = (id)=> {
                     {props.content.map(item => <Card
                         className={"card__maxWidth"}
                         key={item.id}
-                        onClick={handleClick}
+                        onClick={props.onClick}
                         id={item.id}
                         image={item.backdrop_path}
                         genreData={
@@ -83,9 +74,5 @@ const handleClick = (id)=> {
         </section>
     );
 };
-const mapStateToProps = (state) => ({
-    genresDataMovie: getGenresMovies(state),
-    genresDataTv: getGenresTvs(state),
 
-})
-export default connect(mapStateToProps, {getDetails})(ContentRows);
+export default ContentRows;

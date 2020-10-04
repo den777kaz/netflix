@@ -29,7 +29,7 @@ const moviesReducer = (state = initialState, action) => {
         case SET_LOADING:
             return {
                 ...state,
-                isLoading: false
+                isLoading: true
             };
 
         default:
@@ -38,11 +38,13 @@ const moviesReducer = (state = initialState, action) => {
 };
 
 export const resetMovies = () => ({type:RESET_MOVIES});
+export const setLoading = () => ({type:SET_LOADING});
         const setMovies = (results) => ({type:SET_POP_MOVIES , results})
 
 //thunk- middleware
 export const getMoviesData = (name) => {
     return (dispatch) => {
+        dispatch(setLoading())
         moviesAPI.getPopularMovies(name)
             .then(response => {
                 if(response.status === 200) {

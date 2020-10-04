@@ -8,7 +8,6 @@ import downArrow from '../../assets/images/downArrow.svg';
 import closeIcon from '../../assets/images/close-icon.svg';
 import {NavLink} from "react-router-dom";
 import {withRouter} from "react-router-dom";
-import {useHistory} from "react-router-dom";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {getSearch} from "../../redux/reducers/searchReducer";
@@ -22,6 +21,7 @@ const Header = (props) => {
     const [showInput, setShowInput] = useState(false);
     const [inputValue, setInputValue] = useState("");
     const [headerBg, setHeaderBg] = useState(false);
+
 
     useEffect(()=> {
 
@@ -47,8 +47,10 @@ const Header = (props) => {
     }
 
     const closeInputField = (e) => {
+
         e.preventDefault();
-        // history.goBack()
+       // props.history.goBack()
+
         props.history.push("/home");
         setShowInput(false)
         setInputValue("");
@@ -59,8 +61,8 @@ const Header = (props) => {
         if (!inputValue) {
             setShowInput(false);
             setInputValue("");
-            props.history.push("/home");
-            // history.goBack()
+            // props.history.push("/home");
+            props.history.goBack()
 
         }
     }

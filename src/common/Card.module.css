@@ -197,3 +197,7 @@
 .item__title h3 {
     font-size: 1.5vw;
 }
+
+.cardBig {
+    transform: perspective(500px) translateZ(200px) translateX(100px);
+}

@@ -34,7 +34,7 @@ const Card = (props) => {
 
     return (
 
-        <div className={style.card + " " + "card__maxW" + " " + "card"}>
+        <div className={`${style.card} card__maxW card`}>
             <div className={style.item}>
                 <div className={style.image}>
                     {
@@ -66,9 +66,8 @@ const Card = (props) => {
                             <span className={style.tooltip}>Not For Me</span>
                             <img src={dislikeIcon} alt=""/>
                         </span>
-                        <span className={style.option} onClick={e => {
-                            onClick(id)
-                        }}>
+                        <span className={style.option}
+                              onClick={e=>onClick(id)}>
                             <span className={style.tooltip}>More Info</span>
                         <img src={arrowDown} alt=""/>
                     </span>
@@ -80,7 +79,7 @@ const Card = (props) => {
 
                     <div className={style.genres}>
                         <ul>
-                            {genres.slice(0,4).map((genre, i) =>
+                            {genres.map((genre, i) =>
                                 <li key={i}>{genre}</li>
                             )}
                         </ul>

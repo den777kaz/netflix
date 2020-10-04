@@ -4,20 +4,20 @@ import Card from "../../common/Card";
 import {getMoviesData, resetMovies} from "../../redux/reducers/movieReducer";
 import './Movies.css';
 import {getGenresMovies} from "../../redux/selectors/homeSelectors";
-import MovieTab from "./tabs/movieTab";
+import MovieTab from "../../components/tabs/movieTab";
 import Preloader from "../../common/preloader/Preloader";
 
 const Movies = ({moviesData,getMoviesData,genresData, resetMovies,isLoading}) => {
-
     useEffect(()=> {
         getMoviesData()
+
         return ()=> {
             resetMovies();
         }
     }, [])
 
     const handleTabClick = (name) => {
-        resetMovies();
+        // resetMovies();
         getMoviesData(name)
     }
     return (
