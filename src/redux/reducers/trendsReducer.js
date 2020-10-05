@@ -102,10 +102,10 @@ export const getHomeData = () => {
     }
 };
 
-export const getDetails = (id) => {
+export const getDetails = (id, mediaType) => {
     return (dispatch) => {
 
-        getDetailsAPI.getMovieDetails(id)
+        getDetailsAPI.getMovieDetails(id, mediaType)
             .then(response => {
                 if (response.status === 200)
                     // console.log(response.data)
@@ -114,10 +114,10 @@ export const getDetails = (id) => {
             .catch(error => {
                 console.log("ERROR", error)
             })
-        getDetailsAPI.getMovieVideos(id)
+        getDetailsAPI.getMovieVideos(id, mediaType)
             .then(response => {
                 if (response.status === 200)
-                    console.log(response.data.results)
+                    // console.log(response.data.results)
                 dispatch(({type: SET_VIDEOS, payload: response.data.results[0].key}));
             })
             .catch(error => {

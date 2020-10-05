@@ -13,10 +13,9 @@
 
 .details__wrapper > div {
     margin-top: 100px;
-
     border-radius: 10px;
     width: 60%;
-    background-color: black;
+    background-color: #141414;
     max-height: calc(100vh - 200px);
     overflow-y: auto;
 }
@@ -25,8 +24,21 @@
     width: 100%;
     padding-top: 56.25%;
     position: relative;
+    overflow: hidden;
 }
-.details__image img {
+
+.details__image:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: 12;
+    background: linear-gradient(0deg, rgba(20, 20, 20, 1) 10%, rgba(20, 20, 20, 0) 60%);
+}
+
+.details__image > img {
     position: absolute;
     top: 0;
     left: 0;
@@ -36,6 +48,52 @@
     transition: opacity 2s;
     z-index: 12;
 }
-.details__image img.hide {
+
+.details__image > img.hide {
     opacity: 0;
+}
+
+.detail__imageInfo {
+    height: 56%;
+    width: 100%;
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    z-index: 13;
+    display: flex;
+}
+
+.details__imagePoster {
+    display: flex;
+    align-items: flex-end;
+    width: 20%;
+    transition: width 1s;
+}
+
+.details__imagePoster.small {
+    width: 15%;
+    transition-delay: 1s;
+}
+
+.details__imagePoster > img {
+    width: 100%;
+    object-fit: contain;
+
+}
+
+.details__imageText {
+    display: flex;
+    align-items: flex-end;
+    margin-left: 15px;
+}
+
+.details__imageText > h3 {
+    font-size: 2rem;
+    transition: transform 1s;
+    overflow: hidden;
+}
+
+.details__imageText > h3.small {
+    transform: scale(0.7) translateX(-20%);
+    transition-delay: 1s;
 }

@@ -5,9 +5,9 @@ import ReactPlayer from 'react-player'
 
 const DetailsModal = (props) => {
     const {backdrop, poster, title, desc, video} = props;
-    console.log(video)
 
-    const imageUrl = "https://image.tmdb.org/t/p/w1280";
+    const imageUrlBg = "https://image.tmdb.org/t/p/w1280";
+    const imageUrlPoster = "https://image.tmdb.org/t/p/w154";
 
     const [hideBg, setHideBg] = useState(false);
 
@@ -15,6 +15,7 @@ const DetailsModal = (props) => {
         if (e.target.classList.contains("details__wrapper")) {
             document.body.style.overflowY = "";
             props.setDetailsModal(false);
+
         }
     }
     const videoStyle = {
@@ -22,7 +23,8 @@ const DetailsModal = (props) => {
         width: "100%",
         height: "100%",
         top: "0",
-        left: "0"
+        left: "0",
+        transform: "scale(1.45)"
     };
     return (
         <motion.div animate={{opacity: [0, 1]}} exit={{opacity: 0}}
@@ -37,7 +39,7 @@ const DetailsModal = (props) => {
                 <div className={"details__image"}>
                     <img
                         className={hideBg ? "hide" : ""}
-                        src={backdrop ? imageUrl + backdrop : ""} alt=""/>
+                        src={backdrop ? imageUrlBg + backdrop : ""} alt={title}/>
                     <ReactPlayer
                         style={videoStyle}
                         url={`https://www.youtube.com/watch?v=${video}`}
@@ -47,6 +49,15 @@ const DetailsModal = (props) => {
                         onStart={()=>setHideBg(true)}
                         onEnded={()=>setHideBg(false)}
                     />
+                    <div className={"detail__imageInfo"} >
+                        <div className={`details__imagePoster + ${hideBg ? "small" : ""}`}>
+                            <img src={poster ? imageUrlPoster + poster : ""} alt={title}/>
+                        </div>
+                        <div className={"details__imageText"}>
+                            <h3 className={hideBg ? "small" : ""}>{title}</h3>
+                        </div>
+
+                    </div>
 
                 </div>
                 <h3>{title}</h3>

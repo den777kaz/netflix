@@ -9,7 +9,7 @@ import topIcon from '../../assets/images/top10.svg';
 
 const Hero = (props) => {
 
-    const {title, desc, bg, index,id, onClick} = props;
+    const {title, desc, bg, index,id, onClick, mediaType} = props;
     let newText = "";
     let TextLength = 150;
     const imageUrl = "https://image.tmdb.org/t/p/w1280";
@@ -55,7 +55,7 @@ const Hero = (props) => {
                     <button
                         type="button"
                         className="btn-info"
-                        onClick={e=>(onClick(id))}
+                        onClick={e=>(onClick(id, mediaType))}
                     >
                         <span><img src={infoIcon} alt="info icon"/></span> More Info
                     </button>

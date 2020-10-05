@@ -8,7 +8,7 @@ import playBlackIcon from '../assets/images/playBlackIcon.svg';
 
 const Card = (props) => {
 
-    const{genreData, genreIds, id, title, image, onClick} = props;
+    const{genreData, genreIds, id, title, image, onClick, mediaType} = props;
 
     const [genres, setGenres] = useState([]);
 
@@ -67,7 +67,7 @@ const Card = (props) => {
                             <img src={dislikeIcon} alt=""/>
                         </span>
                         <span className={style.option}
-                              onClick={e=>onClick(id)}>
+                              onClick={e=>onClick(id,mediaType)}>
                             <span className={style.tooltip}>More Info</span>
                         <img src={arrowDown} alt=""/>
                     </span>

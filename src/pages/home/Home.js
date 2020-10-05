@@ -38,11 +38,23 @@ const Home = (props) => {
         }
     }, [])
 
-    const handleClick = (id) => {
-        // console.log(id)
+    const handleClick = (id, mediaType) => {
+
+        props.getDetails(id, mediaType);
         setDetailsModal(true)
         document.body.style.overflowY= "hidden"
-        props.getDetails(id);
+
+        // if(mediaType === "tv") {
+        //     setDetailsModal(true)
+        //     document.body.style.overflowY= "hidden"
+        //     props.getDetails(id);
+        // }else if(mediaType === "movie"){
+        //     setDetailsModal(true)
+        //     document.body.style.overflowY= "hidden"
+        //     props.getDetails(id);
+        // }
+
+
     }
 
     const movie = dayMovies.filter((item, index) => index === random)
@@ -52,6 +64,7 @@ const Home = (props) => {
             index={random + 1}
             bg={m.backdrop_path}
             title={m.title}
+            mediaType={m.media_type}
             desc={m.overview}
             onClick={handleClick}
         />)
@@ -66,7 +79,6 @@ const Home = (props) => {
         if (row === "Top Movies this week") return weekMovies;
     };
 
-
     if (isLoading) return <Preloader/>;
 
     return <section>
@@ -74,7 +86,7 @@ const Home = (props) => {
             setDetailsModal={setDetailsModal}
             backdrop={details.backdrop_path}
             poster={details.poster_path}
-            title={details.title}
+            title={details.title ? details.title : details.original_name}
             desc={details.overview}
             video={video}
         /> }

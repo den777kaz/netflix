@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './ContentRows.css';
 import Card from "../../common/Card";
 import Carousel from 'react-elastic-carousel';
+import Hero from "../hero/Hero";
 
 // https://github.com/sag1v/react-elastic-carousel
 
@@ -54,6 +55,7 @@ const ContentRows = (props) => {
                         className={"card__maxWidth"}
                         key={item.id}
                         onClick={props.onClick}
+                        mediaType={item.media_type}
                         id={item.id}
                         image={item.backdrop_path}
                         genreData={
