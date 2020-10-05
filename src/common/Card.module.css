@@ -51,7 +51,7 @@
 
 @media screen and (min-width: 700px) {
     .card:hover {
-        transform: perspective(500px) translateZ(80px) translatey(-40px);
+        transform: perspective(500px) translateZ(100px) translateY(-40px);
         /*transform: translateY(-70px) scale(1.2);*/
         overflow: initial;
         transition-delay: .7s;
@@ -195,7 +195,7 @@
 }
 
 .item__title h3 {
-    font-size: 1.5vw;
+    font-size: min(2vw, 1.5rem);
 }
 
 .cardBig {

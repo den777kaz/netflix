@@ -15,7 +15,7 @@
 }
 
 .row__box > h3 {
-    font-size: 2vw;
+    font-size: min(2.5vw, 2.1rem);
     margin-bottom: 2rem;
     font-weight: 500;
 }
