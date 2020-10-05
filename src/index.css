@@ -16,6 +16,7 @@ html, body {
 }
 body {
     width: 100vw;
+    overflow-x: hidden;
 }
 /*body {*/
 /*    overflow-y: overlay;*/

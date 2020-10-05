@@ -55,7 +55,7 @@ const DetailsModal = (props) => {
                                 <div className={"details__imageText"}>
                                     <h3 className={hideBg ? "small" : ""}>{title}</h3>
                                     <ul>
-                                        { genres && genres.map(genre => <li key={genre.id}>{genre.name}</li>)}
+                                        {/*{ genres && genres.map(genre => <li key={genre.id}>{genre.name}</li>)}*/}
                                     </ul>
                                 </div>
 

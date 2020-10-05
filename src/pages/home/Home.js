@@ -48,7 +48,7 @@ const Home = (props) => {
 
     const closeModal = (e) => {
         if (e.target.classList.contains("details__wrapper")) {
-            document.body.style.overflowY = "scroll";
+            document.body.style.overflowY = "";
             setDetailsModal(false);
             resetDetails();
         }
