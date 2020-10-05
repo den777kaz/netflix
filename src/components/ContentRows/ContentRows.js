@@ -17,8 +17,13 @@ const ContentRows = (props) => {
 
     const breakPoints = [
         {
-            width: 400,
+            width: 200,
             itemsToShow: 2,
+            itemsToScroll: 1
+        },
+        {
+            width: 400,
+            itemsToShow: 3,
             itemsToScroll: 2
         },
         {
@@ -28,13 +33,13 @@ const ContentRows = (props) => {
         },
         {
             width: 1000,
-            itemsToShow: 3,
-            itemsToScroll: 2
+            itemsToShow: 4,
+            itemsToScroll: 3
         },
         {
             width: 1200,
-            itemsToShow: 4,
-            itemsToScroll: 3
+            itemsToShow: 6,
+            itemsToScroll: 5
         },
     ]
 
@@ -44,8 +49,8 @@ const ContentRows = (props) => {
             <div className={"row__box"}>
                 <h3>{props.title}</h3>
                 <Carousel className="sliderRow"
-                          itemsToShow={5}
-                          itemsToScroll={3}
+                          itemsToShow={6}
+                          itemsToScroll={5}
                           breakPoints={breakPoints}
                           pagination={hideSliderElem}
                           showArrows={hideSliderElem}

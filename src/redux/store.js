@@ -4,12 +4,14 @@ import thunkMiddleWare from 'redux-thunk';
 import searchReducer from "./reducers/searchReducer";
 import configDataReducer from "./reducers/configDataReducer";
 import moviesReducer from "./reducers/movieReducer";
+import detailsReducer from "./reducers/detailsReducer";
 
 let reducers = combineReducers({
     trends: trendsReducer,
     searchResult: searchReducer,
     configData: configDataReducer,
-    movies: moviesReducer
+    movies: moviesReducer,
+    details: detailsReducer,
 });
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleWare));

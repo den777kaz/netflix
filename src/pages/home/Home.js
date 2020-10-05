@@ -1,7 +1,7 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Hero from "../../components/hero/Hero";
 import {connect} from "react-redux";
-import {getDetails, getHomeData, resetDetails, resetTrends} from "../../redux/reducers/trendsReducer";
+import {getHomeData, resetTrends} from "../../redux/reducers/trendsReducer";
 import {
     getDayMovies,
     getGenresMovies,
@@ -12,13 +12,15 @@ import {
 import ContentRows from "../../components/ContentRows/ContentRows";
 import Preloader from "../../common/preloader/Preloader";
 import DetailsModal from "../../components/detailsModal/DetailsModal";
+import {getDetails, resetDetails} from "../../redux/reducers/detailsReducer";
 
 
 const Home = (props) => {
     const {
         dayMovies, weekMovies, weekTvs,
         isLoading, genresDataMovie, genresDataTv,
-        details, video, resetDetails
+        details, video, getHomeData,resetTrends,
+        resetDetails, getDetails, isLoadingDetails,detailGenres
     } = props;
 
 
@@ -30,25 +32,25 @@ const Home = (props) => {
         let random = Math.floor(Math.random() * 10);
         setRandom(random)
 
-
-        props.getHomeData();
+        getHomeData();
 
         return () => {
             // console.log("DEAD")
-            props.resetTrends();
+            resetTrends();
         }
     }, [])
 
     const handleClick = (id, mediaType) => {
-        props.getDetails(id, mediaType);
+        getDetails(id, mediaType);
         setDetailsModal(true);
         document.body.style.overflowY= "hidden";
     }
 
     const closeModal = (e) => {
         if (e.target.classList.contains("details__wrapper")) {
-            document.body.style.overflowY = "";
+            document.body.style.overflowY = "scroll";
             setDetailsModal(false);
+            resetDetails();
         }
     }
 
@@ -86,6 +88,7 @@ const Home = (props) => {
             desc={details.overview}
             video={video}
             genres={details.genres}
+            isLoading={isLoadingDetails}
         /> }
         {movie}
         {RowTitles.map((row, index) => <ContentRows
@@ -110,8 +113,11 @@ const mapStateToProps = (state) => ({
     isLoading: state.trends.isLoading,
     genresDataMovie: getGenresMovies(state),
     genresDataTv: getGenresTvs(state),
-    details: state.trends.details,
-    video: state.trends.video
+    details: state.details.details,
+    video: state.details.video,
+    isLoadingDetails: state.details.isLoading,
+
+
 })
 
 export default connect(mapStateToProps, {getHomeData, resetTrends, getDetails, resetDetails})(Home);

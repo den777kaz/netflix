@@ -1,21 +1,17 @@
-import {getDetailsAPI, trendsAPI} from "../../api/api";
+import {trendsAPI} from "../../api/api";
 
 const SET_DAY_TRENDS = "SET_DAY_TRENDS";
 const SET_WEEK_TRENDS_MOVIE = "SET_WEEK_TRENDS_MOVIE";
 const SET_WEEK_TRENDS_TV = "SET_WEEK_TRENDS_TV";
 const RESET_TRENDS = "RESET_TRENDS";
 const SET_LOADING = "SET_LOADING";
-const SET_DETAILS = "SET_DETAILS";
-const SET_VIDEOS = "SET_VIDEOS";
-const RESET_DETAILS = "RESET_DETAILS";
+
 
 let initialState = {
     dayMovie: [],
     weekMovie: [],
     weekTv: [],
     isLoading: true,
-    details: [],
-    video: []
 };
 
 const trendsReducer = (state = initialState, action) => {
@@ -41,29 +37,12 @@ const trendsReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false
             };
-        case SET_DETAILS:
-            return {
-                ...state,
-                details: action.payload,
-                isLoading: false
-            };
-        case SET_VIDEOS:
-            return {
-                ...state,
-                video: action.payload
-            };
         case RESET_TRENDS:
             return {
                 ...state,
                 dayMovie: [],
                 weekMovie: [],
                 weekTv: [],
-                isLoading: true
-            };
-        case RESET_DETAILS:
-            return {
-                ...state,
-                details: [],
                 isLoading: true
             };
 
@@ -77,8 +56,6 @@ const setWeekTrendTv = (results) => ({type: SET_WEEK_TRENDS_TV, results});
 const setWeekTrendMovie = (results) => ({type: SET_WEEK_TRENDS_MOVIE, results});
 
 export const resetTrends = () => ({type: RESET_TRENDS});
-export const resetDetails = () => ({type: RESET_DETAILS});
-
 
 //thunk- middleware
 export const getHomeData = () => {
@@ -109,29 +86,5 @@ export const getHomeData = () => {
             })
     }
 };
-
-export const getDetails = (id, mediaType) => {
-    return (dispatch) => {
-
-        getDetailsAPI.getMovieDetails(id, mediaType)
-            .then(response => {
-                if (response.status === 200)
-                    // console.log(response.data)
-                    dispatch(({type: SET_DETAILS, payload: response.data}));
-            })
-            .catch(error => {
-                console.log("ERROR", error)
-            })
-        getDetailsAPI.getMovieVideos(id, mediaType)
-            .then(response => {
-                if (response.status === 200)
-                    // console.log(response.data.results)
-                    dispatch(({type: SET_VIDEOS, payload: response.data.results[0].key}));
-            })
-            .catch(error => {
-                console.log("ERROR", error)
-            })
-    }
-}
 
 export default trendsReducer;
