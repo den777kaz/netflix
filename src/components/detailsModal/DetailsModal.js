@@ -4,20 +4,13 @@ import {motion, AnimatePresence} from "framer-motion"
 import ReactPlayer from 'react-player'
 
 const DetailsModal = (props) => {
-    const {backdrop, poster, title, desc, video} = props;
+    const {backdrop, poster, title, desc, video, doClose, genres} = props;
 
     const imageUrlBg = "https://image.tmdb.org/t/p/w1280";
     const imageUrlPoster = "https://image.tmdb.org/t/p/w154";
 
     const [hideBg, setHideBg] = useState(false);
 
-    const closeModal = (e) => {
-        if (e.target.classList.contains("details__wrapper")) {
-            document.body.style.overflowY = "";
-            props.setDetailsModal(false);
-
-        }
-    }
     const videoStyle = {
         position: 'absolute',
         width: "100%",
@@ -26,9 +19,10 @@ const DetailsModal = (props) => {
         left: "0",
         transform: "scale(1.45)"
     };
+    console.log(genres)
     return (
         <motion.div animate={{opacity: [0, 1]}} exit={{opacity: 0}}
-                    className={"details__wrapper"} onClick={e => closeModal(e)}>
+                    className={"details__wrapper"} onClick={e => doClose(e)}>
 
             <motion.div
                 animate={{scale: [0, 1]}}
@@ -55,6 +49,9 @@ const DetailsModal = (props) => {
                         </div>
                         <div className={"details__imageText"}>
                             <h3 className={hideBg ? "small" : ""}>{title}</h3>
+                            <ul>
+                                {/*{genres.map(genre=> <li>{genre.name}</li>)}*/}
+                            </ul>
                         </div>
 
                     </div>

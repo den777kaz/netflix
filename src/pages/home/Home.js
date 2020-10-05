@@ -1,7 +1,7 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import Hero from "../../components/hero/Hero";
 import {connect} from "react-redux";
-import {getDetails, getHomeData, resetTrends} from "../../redux/reducers/trendsReducer";
+import {getDetails, getHomeData, resetDetails, resetTrends} from "../../redux/reducers/trendsReducer";
 import {
     getDayMovies,
     getGenresMovies,
@@ -17,7 +17,8 @@ import DetailsModal from "../../components/detailsModal/DetailsModal";
 const Home = (props) => {
     const {
         dayMovies, weekMovies, weekTvs,
-        isLoading, genresDataMovie, genresDataTv, details, video
+        isLoading, genresDataMovie, genresDataTv,
+        details, video, resetDetails
     } = props;
 
 
@@ -39,22 +40,16 @@ const Home = (props) => {
     }, [])
 
     const handleClick = (id, mediaType) => {
-
         props.getDetails(id, mediaType);
-        setDetailsModal(true)
-        document.body.style.overflowY= "hidden"
+        setDetailsModal(true);
+        document.body.style.overflowY= "hidden";
+    }
 
-        // if(mediaType === "tv") {
-        //     setDetailsModal(true)
-        //     document.body.style.overflowY= "hidden"
-        //     props.getDetails(id);
-        // }else if(mediaType === "movie"){
-        //     setDetailsModal(true)
-        //     document.body.style.overflowY= "hidden"
-        //     props.getDetails(id);
-        // }
-
-
+    const closeModal = (e) => {
+        if (e.target.classList.contains("details__wrapper")) {
+            document.body.style.overflowY = "";
+            setDetailsModal(false);
+        }
     }
 
     const movie = dayMovies.filter((item, index) => index === random)
@@ -83,12 +78,14 @@ const Home = (props) => {
 
     return <section>
         {detailsModal && <DetailsModal
+            doClose={closeModal}
             setDetailsModal={setDetailsModal}
             backdrop={details.backdrop_path}
             poster={details.poster_path}
             title={details.title ? details.title : details.original_name}
             desc={details.overview}
             video={video}
+            genres={details.genres}
         /> }
         {movie}
         {RowTitles.map((row, index) => <ContentRows
@@ -117,5 +114,5 @@ const mapStateToProps = (state) => ({
     video: state.trends.video
 })
 
-export default connect(mapStateToProps, {getHomeData, resetTrends, getDetails})(Home);
+export default connect(mapStateToProps, {getHomeData, resetTrends, getDetails, resetDetails})(Home);
 

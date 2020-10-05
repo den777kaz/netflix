@@ -7,6 +7,7 @@ const RESET_TRENDS = "RESET_TRENDS";
 const SET_LOADING = "SET_LOADING";
 const SET_DETAILS = "SET_DETAILS";
 const SET_VIDEOS = "SET_VIDEOS";
+const RESET_DETAILS = "RESET_DETAILS";
 
 let initialState = {
     dayMovie: [],
@@ -43,7 +44,8 @@ const trendsReducer = (state = initialState, action) => {
         case SET_DETAILS:
             return {
                 ...state,
-                details: action.payload
+                details: action.payload,
+                isLoading: false
             };
         case SET_VIDEOS:
             return {
@@ -56,6 +58,11 @@ const trendsReducer = (state = initialState, action) => {
                 dayMovie: [],
                 weekMovie: [],
                 weekTv: [],
+                isLoading: true
+            };
+        case RESET_DETAILS:
+            return {
+                ...state,
                 details: [],
                 isLoading: true
             };
@@ -70,6 +77,7 @@ const setWeekTrendTv = (results) => ({type: SET_WEEK_TRENDS_TV, results});
 const setWeekTrendMovie = (results) => ({type: SET_WEEK_TRENDS_MOVIE, results});
 
 export const resetTrends = () => ({type: RESET_TRENDS});
+export const resetDetails = () => ({type: RESET_DETAILS});
 
 
 //thunk- middleware
@@ -118,7 +126,7 @@ export const getDetails = (id, mediaType) => {
             .then(response => {
                 if (response.status === 200)
                     // console.log(response.data.results)
-                dispatch(({type: SET_VIDEOS, payload: response.data.results[0].key}));
+                    dispatch(({type: SET_VIDEOS, payload: response.data.results[0].key}));
             })
             .catch(error => {
                 console.log("ERROR", error)
