@@ -31,13 +31,14 @@
 
 }
 
-/*.rec-item-wrapper {*/
-/*    margin-right: 20px;*/
-/*}*/
-.contentRows .card__maxW {
-    min-width: calc(100% - 5px);
-    padding-right: 5px;
+.iamfxf {
+    /*justify-content: normal !important;*/
+}
 
+
+.contentRows .card__maxW {
+    /*min-width: calc(100% - 5px);*/
+    /*padding-right: 5px;*/
 }
 
 
@@ -48,12 +49,13 @@
     box-shadow: none;
     height: 100%;
     border-radius: 0;
-    width: 4%;
+    width: 5.65%;
     font-size: 3vw;
+    margin: 0;
 }
 
 .rec-carousel .rec-arrow-right {
-    right: -4%;
+    right: -5%;
 }
 
 .rec-carousel .rec-arrow-right:hover {
@@ -66,7 +68,7 @@
 }
 
 .rec-carousel .rec-arrow-left {
-    left: -4%;
+    left: -5%;
 }
 
 .rec-carousel > button:hover:enabled, .rec-carousel > button:focus:enabled {

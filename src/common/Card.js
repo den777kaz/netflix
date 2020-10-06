@@ -11,8 +11,11 @@ const Card = (props) => {
     const{genreData, genreIds, id, title, image, onClick, mediaType} = props;
 
     const [genres, setGenres] = useState([]);
+    const [onHover, setOnHover] = useState(false);
 
     const imageUrl = "https://image.tmdb.org/t/p/w300";
+
+
 
     useEffect(() => {
         if(genreData && genreIds){
@@ -32,11 +35,27 @@ const Card = (props) => {
        })
     };
 
+    const onEnter = (e) => {
+        // setTimeout(()=>{
+        //     setOnHover(true)
+        // },500)
+        setOnHover(true)
+    }
+    const onLeave = (e) => {
+        setOnHover(false)
+    }
+
     return (
 
-        <div className={`${style.card} card__maxW card`}>
+        <div
+            onMouseEnter={e=>onEnter(e)}
+            onMouseLeave={e=>onLeave(e)}
+            className={`${style.card} card__maxW card ${onHover ? style["active"] : ""}`}
+        >
             <div className={style.item}>
-                <div className={style.image}>
+                <div
+                    className={`${style.image} ${onHover ? style["active"] : ""}`}
+                >
                     {
                         image
                             ? <img src={imageUrl + image} alt={title}/>
@@ -48,7 +67,10 @@ const Card = (props) => {
                         <h3>{title}</h3>
                     </div>
                 </div>
-                <div className={style.info}>
+                <div
+                    // className={style.info + onHover ? style["activet"] : ""}
+                    className={`${style.info} ${onHover ? style["active"] : ""}`}
+                >
 
                     <div className={style.options}>
                         <span className={style.option + " " + style.play}>
