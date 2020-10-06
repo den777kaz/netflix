@@ -51,16 +51,12 @@
 
 @media screen and (min-width: 700px) {
     .card:hover {
-        transform: perspective(500px) translateZ(100px) translateY(-40px);
+        transform: perspective(500px) translateZ(160px) translateY(-30px);
         /*transform: translateY(-70px) scale(1.2);*/
-        overflow: initial;
         transition-delay: .7s;
-        z-index: 2;
+        z-index: 21;
     }
 
-    .card:hover + .contentRows {
-        overflow: visible !important;
-    }
 
     .card:hover .image {
         border-radius: 10px 10px 0 0;
