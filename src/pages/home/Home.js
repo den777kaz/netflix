@@ -9,7 +9,7 @@ import {
     getWeekMovies,
     getWeekTvs
 } from "../../redux/selectors/homeSelectors";
-import ContentRows from "../../components/ContentRows/ContentRows";
+import ContentRow from "../../components/ContentRow/ContentRow";
 import Preloader from "../../common/preloader/Preloader";
 import DetailsModal from "../../components/detailsModal/DetailsModal";
 import {getDetails, resetDetails} from "../../redux/reducers/detailsReducer";
@@ -67,6 +67,7 @@ const Home = (props) => {
         />)
 
     const RowTitles = [
+        "Top 10 Movie Today",
         "Top TV shows this week",
         "Top Movies this week"
     ];
@@ -74,11 +75,12 @@ const Home = (props) => {
     const getRowContent = (row) => {
         if (row === "Top TV shows this week") return weekTvs;
         if (row === "Top Movies this week") return weekMovies;
+        if (row === "Top 10 Movie Today") return dayMovies.slice(0,10);
     };
 
     if (isLoading) return <Preloader/>;
 
-    return <section>
+    return <main>
         {detailsModal && <DetailsModal
             doClose={closeModal}
             setDetailsModal={setDetailsModal}
@@ -91,7 +93,7 @@ const Home = (props) => {
             isLoading={isLoadingDetails}
         /> }
         {movie}
-        {RowTitles.map((row, index) => <ContentRows
+        {RowTitles.map((row, index) => <ContentRow
             key={index}
             content={
                 getRowContent(row)
@@ -102,7 +104,7 @@ const Home = (props) => {
             onClick={handleClick}
         />)}
 
-    </section>
+    </main>
 
 };
 

@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import './ContentRows.css';
+import './ContentRow.css';
 import Card from "../../common/Card";
 import Carousel from 'react-elastic-carousel';
-import Hero from "../hero/Hero";
 
 // https://github.com/sag1v/react-elastic-carousel
 
-const ContentRows = (props) => {
+const ContentRow = (props) => {
     const [hideSliderElem, setHideSliderElem] = useState(false);
 
     useEffect(()=> {
@@ -45,7 +44,7 @@ const ContentRows = (props) => {
 
 
     return (
-        <section className="contentRows">
+        <section className="contentRow">
             <div className={"row__box"}>
                 <h3>{props.title}</h3>
                 <Carousel className="sliderRow"
@@ -82,4 +81,4 @@ const ContentRows = (props) => {
     );
 };
 
-export default ContentRows;
+export default ContentRow;

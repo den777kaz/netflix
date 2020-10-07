@@ -4,7 +4,7 @@
     /*min-height: 1000px;*/
     /*max-height: 1200px;*/
     /*padding-top: 56.25%;*/
-    padding-top: 50%;
+    padding-top: 48%;
     position: relative;
     z-index: 0;
 }
@@ -116,7 +116,8 @@
 }
 .info__action button {
     margin-right: 3%;
-    padding: min(1vw, 10px) min(2vw, 30px);
+    padding: min(1vw, 15px) min(2vw, 30px);
+    min-width: min(10vw,250px);
     font-size: min(1.5vw,2rem);
     /*min-width: 160px;*/
     display: flex;
@@ -124,7 +125,7 @@
     align-items: center;
     color: #141414;
     font-weight: bold;
-    border-radius: 10px;
+    border-radius: 5px;
     border: none;
     transition: background-color .4s ease;
     cursor: pointer;
@@ -145,7 +146,9 @@
 .info__action .btn-info:hover {
     background: rgba(109,109,110,0.3);
 }
-
+.info__action .btn-play {
+    background-color: white;
+}
 .info__action .btn-play:hover {
     background-color: lightgray;
 }

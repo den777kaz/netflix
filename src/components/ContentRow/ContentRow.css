@@ -1,16 +1,12 @@
-.contentRows {
-    padding: 10px 4% 40px 4%;
+.contentRow {
+    padding: 10px 4% 10px 4%;
     position: relative;
-    /*top: -100px;*/
     top: -8vw;
+    /*top: -8vw;*/
 }
-@media screen and (max-width: 700px) {
-    .contentRows {
-        padding: 0 4% 0 4%;
-    }
-}
+
 .row__box {
-    margin-bottom: 5vw;
+    margin-bottom: 3vw;
 }
 
 .row__box > h3 {
@@ -36,7 +32,7 @@
 }
 
 
-.contentRows .card__maxW {
+.contentRow .card__maxW {
     /*min-width: calc(100% - 5px);*/
     /*padding-right: 5px;*/
 }
@@ -87,7 +83,7 @@
     height: 3px;
     border-radius: 2px;
     box-shadow: none;
-    background-color: #141414;
+    background-color: lightgrey;
 }
 
 .rec-pagination button:hover {
@@ -96,5 +92,5 @@
 }
 
 .rec-pagination button.rec-dot_active {
-    background-color: lightgray;
+    background-color: red;
 }

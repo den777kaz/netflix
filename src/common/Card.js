@@ -54,6 +54,7 @@ const Card = (props) => {
         >
             <div className={style.item}>
                 <div
+                    onClick={e=>onClick(id,mediaType)}
                     className={`${style.image} ${onHover ? style["active"] : ""}`}
                 >
                     {

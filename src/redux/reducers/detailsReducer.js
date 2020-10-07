@@ -4,11 +4,13 @@ const SET_LOADING = "SET_LOADING";
 const SET_DETAILS = "SET_DETAILS";
 const RESET_DETAILS = "RESET_DETAILS";
 const SET_VIDEOS = "SET_VIDEOS";
+const SET_MUTED = "SET_MUTED";
 
 let initialState = {
     isLoading: true,
     details: [],
-    video: []
+    video: [],
+    isMuted: false
 };
 
 const trendsReducer = (state = initialState, action) => {
@@ -37,6 +39,11 @@ const trendsReducer = (state = initialState, action) => {
                 details: [],
                 isLoading: true
             };
+        case SET_MUTED:
+            return {
+                ...state,
+                isMuted: action.payload
+            };
 
         default:
             return state;
@@ -44,6 +51,7 @@ const trendsReducer = (state = initialState, action) => {
 };
 
 export const resetDetails = () => ({type: RESET_DETAILS});
+export const setMuteGlobal = (payload) => ({type: SET_MUTED, payload});
 
 //thunk- middleware
 

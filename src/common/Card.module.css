@@ -2,7 +2,8 @@
     width: 97%;
     position: relative;
     /*overflow: hidden;*/
-    transition: all .3s ease-out;
+    will-change: transform;
+    transition: transform .2s ease-out;
     border-radius: 10px;
 }
 
@@ -50,6 +51,10 @@
     transition-delay: .8s;
     z-index: 21;
 }
+/*.card.modal {*/
+/*    transform: perspective(2200px) translateZ(1000px) translate(142%,-46%);*/
+/*    !*transform: translateY(-70px) scale(1.2);*!*/
+/*}*/
 .info.active {
     transition-delay: .8s;
     border-radius: 0 0 10px 10px;
@@ -83,7 +88,7 @@
 /*    }*/
 /*}*/
 
-/*.card:hover .contentRows {*/
+/*.card:hover .contentRow {*/
 /*   !*overflow: initial;*!*/
 /*    */
 /*}*/
