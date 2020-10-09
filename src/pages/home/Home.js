@@ -23,8 +23,6 @@ const Home = (props) => {
         resetDetails, getDetails, isLoadingDetails,detailGenres
     } = props;
 
-
-
     const [detailsModal, setDetailsModal] = useState(false);
     const [random, setRandom] = useState(null);
 
@@ -82,14 +80,10 @@ const Home = (props) => {
 
     return <main>
         {detailsModal && <DetailsModal
+            data={details}
             doClose={closeModal}
             setDetailsModal={setDetailsModal}
-            backdrop={details.backdrop_path}
-            poster={details.poster_path}
-            title={details.title ? details.title : details.original_name}
-            desc={details.overview}
             video={video}
-            genres={details.genres}
             isLoading={isLoadingDetails}
         /> }
         {movie}

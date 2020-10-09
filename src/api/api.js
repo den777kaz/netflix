@@ -63,10 +63,10 @@ export const moviesAPI = {
 export const getDetailsAPI = {
 
     getMovieDetails(id, mediaType){
-        return configV3.get(`${mediaType}/${id}${apiKey}&language=en-US`)
+        return configV3.get(`${mediaType}/${id}${apiKey}&language=en-US&append_to_response=credits`)
     },
     getMovieVideos(id, mediaType){
-        return configV3.get(`${mediaType}/${id}/videos${apiKey}&language=en-US&append_to_response=videos`)
+        return configV3.get(`${mediaType}/${id}/videos${apiKey}&language=en-US`)
     },
 
 };

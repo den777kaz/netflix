@@ -8,26 +8,40 @@ import {connect} from "react-redux";
 import {setMuteGlobal} from "../../redux/reducers/detailsReducer";
 
 
-
 const DetailsModal = (props) => {
 
-    const {backdrop, poster, title, desc, video, doClose, genres, isLoading, setMuteGlobal, isMuted} = props;
+    const {video, doClose, isLoading, setMuteGlobal, isMuted} = props;
+    const {overview, credits, genres, title, original_name, poster_path, backdrop_path, release_date, vote_average, homepage, runtime} = props.data;
+
     const imageUrlBg = "https://image.tmdb.org/t/p/w1280";
     const imageUrlPoster = "https://image.tmdb.org/t/p/w154";
 
     const [hideBg, setHideBg] = useState(false);
+    const [onPlay, setOnPlay] = useState(true);
+    const [muted, setMuted] = useState(isMuted);
+    const [trailer, setTrailer] = useState(null);
 
-    const [onPlay,setOnPlay] = useState(true);
-    const [muted,setMuted] = useState(isMuted);
-
-    useEffect(()=> {
-        console.log("RENDER")
-        // if(window.screen <= 800) {
-        //     setMuted(true)
-        // }
+    useEffect(() => {
         return () => setMuteGlobal(muted)
-    }, [muted])
+    }, [muted, setMuteGlobal])
 
+    useEffect(() => {
+        getOffTrailel()
+    }, [video])
+    console.log(video)
+    const getOffTrailel = () => {
+        if (video) {
+            video.filter(v => {
+                let string = v.name;
+                if (string.includes("Official Trailer")) {
+                    console.log(v.name);
+                    setTrailer(v.key)
+                }
+            })
+
+
+        }
+    }
 
     const videoStyle = {
         position: 'absolute',
@@ -48,67 +62,119 @@ const DetailsModal = (props) => {
                     className={"details__wrapper"}
                     onClick={e => doClose(e)}>
             <motion.div
-                onClick={e=>handleClick(e)}
+                onClick={e => handleClick(e)}
                 animate={{scale: [0, 1]}}
                 layout
                 exit={{opacity: 0}}
                 className={"details"}>
-                        <div className={"details__image"}>
-                            {backdrop &&
-                            <img
-                                className={hideBg ? "hide" : ""}
-                                src = {imageUrlBg + backdrop} alt={title}
-                            />
-                            }
+                <div className={"details__image"}>
+                    {backdrop_path &&
+                    <img
+                        className={hideBg ? "hide" : ""}
+                        src={imageUrlBg + backdrop_path} alt={title || original_name}
+                    />
+                    }
+                    {
+                        trailer &&
+                        <ReactPlayer
+                            style={videoStyle}
+                            url={`https://www.youtube.com/watch?v=${trailer}`}
+                            playing={onPlay}
+                            muted={muted}
+                            width="100%"
+                            height="100%"
+                            onStart={() => setHideBg(true)}
+                            onEnded={() => setHideBg(false)}
+                        />
+                    }
 
-                            <ReactPlayer
-                                style={videoStyle}
-                                url={`https://www.youtube.com/watch?v=${video}`}
-                                playing={onPlay}
-                                muted={muted}
-                                width="100%"
-                                height="100%"
-                                onStart={() => setHideBg(true)}
-                                onEnded={() => setHideBg(false)}
-                            />
-                            <div className={"details__buttons"}>
-                                {!muted
-                                    ? <button
-                                        onClick={handleClick}
-                                        className={"doPlay"}>
-                                        <img src={pauseIcon} alt="play Icon"/>
-                                    </button>
-                                    :  <button
-                                        onClick={handleClick}
-                                        className={"doPause"}>
-                                        <img src={playIcon} alt="pause icon"/>
-                                    </button>
-                                }
-                            </div>
-                            <div className={"details__buttonsWrapper"}>
+                    <div className={"details__buttons"}>
+                        {!muted
+                            ? <button
+                                onClick={handleClick}
+                                className={"doPlay"}>
+                                <img src={pauseIcon} alt="play Icon"/>
+                            </button>
+                            : <button
+                                onClick={handleClick}
+                                className={"doPause"}>
+                                <img src={playIcon} alt="pause icon"/>
+                            </button>
+                        }
+                    </div>
+                    <div className={"details__buttonsWrapper"}>
 
-                            </div>
-                            <div className={"detail__imageInfo"}>
-                                <div className={`details__imagePoster + ${hideBg ? "small" : ""}`}>
-                                    <img src={poster ? imageUrlPoster + poster : ""} alt={title}/>
-                                </div>
-                                <div className={"details__imageText"}>
-                                    <h3 className={hideBg ? "small" : ""}>{title}</h3>
-                                    <ul>
-                                        {/*{ genres && genres.map(genre => <li key={genre.id}>{genre.name}</li>)}*/}
-                                    </ul>
-                                </div>
-
-                            </div>
-
+                    </div>
+                    <div className={"detail__imageInfo"}>
+                        <div className={`details__imagePoster + ${hideBg ? "small" : ""}`}>
+                            <img src={poster_path ? imageUrlPoster + poster_path : ""} alt={title}/>
                         </div>
-                        <h3>{title}</h3>
-                        <p>{desc}</p>
+                        <div className={"details__imageText"}>
+                            <h3 className={hideBg ? "small" : ""}>
+                                {title ? title : original_name}
+                            </h3>
+                            <ul>
+                                {/*{ genres && genres.map(genre => <li key={genre.id}>{genre.name}</li>)}*/}
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div className={"detailsDescContainer"}>
+                    <div className={"details__smallInfo"}>
+                        <span>{release_date}</span>
+                        <span>{runtime} min</span>
+                        <span className={"smasllInfo__rating"}>Rating <span>{vote_average}</span>/10</span>
+                        {/* eslint-disable-next-line react/jsx-no-target-blank */}
+                        {homepage ? <span><a href={homepage} target="_blank">Website</a></span> : null}
+
+                    </div>
+                    <div className={"details__desc"}>
+                        <p>{overview}</p>
+                        <div className={"details__cast"}>
+                            <p><span>Cast: </span>
+                                {credits && [...credits.cast].splice(0, 5).map(c => `${c.name}, `)} more
+                            </p>
+                            <p><span className={"cast__genres"}>Genres: </span>
+                                {genres && genres.map(genre => `${genre.name}, `)}
+                            </p>
+                        </div>
+                    </div>
+
+                    {/*more Trailers*/}
+                    {video &&
+                    <div className={"moreTrailersWrap"}>
+                        <h3>More Trailers</h3>
+                        <div className={"moreTrailers"}>
+                            {
+                                [...video].map(v =>
+                                    <div key={v.id} className={"moreTrailer__item"}>
+                                        <ReactPlayer
+                                            url={`https://www.youtube.com/watch?v=${v.key}`}
+                                            muted={muted}
+                                            width="100%"
+                                            height="100%"
+                                            controls={true}
+                                            // light={true}
+                                        />
+                                    </div>
+                                )
+                            }
+                        </div>
+                    </div>
+
+
+                    }
+
+
+                </div>
+
             </motion.div>
         </motion.div>
     );
 };
 const mapStateToProps = (state) => ({
-    isMuted:state.details.isMuted,
+    isMuted: state.details.isMuted,
 })
 export default connect(mapStateToProps, {setMuteGlobal})(DetailsModal);

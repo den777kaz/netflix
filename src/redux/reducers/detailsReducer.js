@@ -37,6 +37,7 @@ const trendsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 details: [],
+                video: [],
                 isLoading: true
             };
         case SET_MUTED:
@@ -71,7 +72,8 @@ export const getDetails = (id, mediaType) => {
             .then(response => {
                 if (response.status === 200)
                     // console.log(response.data.results)
-                    dispatch(({type: SET_VIDEOS, payload: response.data.results[0].key}));
+                    // dispatch(({type: SET_VIDEOS, payload: response.data.results[0].key}));
+                    dispatch(({type: SET_VIDEOS, payload: response.data.results}));
             })
             .catch(error => {
                 console.log("ERROR", error)

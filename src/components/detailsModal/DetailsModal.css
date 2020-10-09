@@ -58,10 +58,11 @@
     height: 56%;
     width: 100%;
     position: absolute;
-    bottom: 15px;
-    left: 15px;
+    bottom: 40px;
+    left: 0;
     z-index: 13;
     display: flex;
+    padding: 0 4%;
 }
 
 .details__imagePoster {
@@ -136,6 +137,77 @@
     opacity: 1;
     cursor: pointer;
 }
+
 .details__buttons button img {
     width: 30px;
+}
+
+
+.detailsDescContainer {
+    padding: 0 4%;
+}
+
+.details__smallInfo {
+    display: flex;
+}
+
+.details__smallInfo > span {
+    font-size: min(2vw, 1.5rem);
+    margin-right: 15px;
+}
+
+.details__smallInfo a {
+    text-decoration: underline;
+    color: lawngreen;
+}
+
+.smasllInfo__rating span {
+    color: lawngreen;
+}
+
+.details__desc {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0;
+}
+
+.details__desc > p {
+    font-size: min(2vw, 1.6rem);
+    width: 60%;
+}
+
+.details__cast {
+    width: 35%;
+}
+
+.details__cast > p {
+    font-size: min(1.8vw, 1.4rem);
+}
+
+.details__cast > p span {
+    color: darkgrey;
+}
+
+
+
+.moreTrailersWrap > h3 {
+    font-size: min(2vw, 2rem);
+    margin: 2rem 0;
+}
+
+.moreTrailers {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+}
+
+.moreTrailer__item {
+    flex: 0 0 calc(33% - 10px);
+    /*padding-top: 56.25%;*/
+    position: relative;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
 }
