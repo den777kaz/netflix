@@ -31,10 +31,13 @@ const DetailsModal = (props) => {
     }, [video])
     const getOffTrailer = () => {
         if (video) {
-            video.filter(v => {
+         const videoKeys = video.filter(v => {
                 let string = v.name;
                 if (string.includes("Official Trailer")) {
-                    setTrailer(v.key)
+                    setTrailer(v.key);
+
+                }else if(string.includes("Trailer")) {
+                    setTrailer(v.key);
                 }
             })
 
@@ -62,7 +65,7 @@ const DetailsModal = (props) => {
                     onClick={e => doClose(e)}>
             <motion.div
                 onClick={e => handleClick(e)}
-                animate={{scale: [0, 1]}}
+                animate={{opacity: [0, 1]}}
                 layout
                 exit={{opacity: 0}}
                 className={"details"}>
@@ -150,20 +153,20 @@ const DetailsModal = (props) => {
                     <div className={"moreTrailersWrap"}>
                         <h3>More Trailers</h3>
                         <div className={"moreTrailers"}>
-                            {
-                                [...video].map(v =>
-                                    <div key={v.id} className={"moreTrailer__item"}>
-                                        <ReactPlayer
-                                            url={`https://www.youtube.com/watch?v=${v.key}`}
-                                            muted={muted}
-                                            width="100%"
-                                            height="100%"
-                                            controls={true}
-                                            // light={true}
-                                        />
-                                    </div>
-                                )
-                            }
+                            {/*{*/}
+                            {/*    [...video].map(v =>*/}
+                            {/*        <div key={v.id} className={"moreTrailer__item"}>*/}
+                            {/*            <ReactPlayer*/}
+                            {/*                url={`https://www.youtube.com/watch?v=${v.key}`}*/}
+                            {/*                muted={muted}*/}
+                            {/*                width="100%"*/}
+                            {/*                height="100%"*/}
+                            {/*                controls={true}*/}
+                            {/*                // light={true}*/}
+                            {/*            />*/}
+                            {/*        </div>*/}
+                            {/*    )*/}
+                            {/*}*/}
                         </div>
                     </div>
 

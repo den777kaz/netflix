@@ -49,16 +49,22 @@ const SimilarContent = ({id}) => {
     // const [response, loading, hasError] = useFetch(`https://api.themoviedb.org/3/movie/${id}/similar${apiKey}&language=en-US`)
     // console.log(id)
     // const [state, setState] = useState([])
-    // const [query, setQuery] = useState(id)
-    //
+    // const [filter, setFilter] = useState(null);
+    // const [query, setQuery] = useState(null)
     // useEffect(() => {
-    //     fetch(`https://api.themoviedb.org/3/movie/${query}/similar${apiKey}&language=en-US`)
-    //         .then((res) => {
-    //             // setState(res.data)
-    //             console.log(res)
-    //         })
+    //     console.log("RENDER")
+    //    if(id) {
+    //        setFilter("similar")
+    //        fetch(`https://api.themoviedb.org/3/movie/${id}/similar${apiKey}&language=en-US`)
+    //            .then(response => response.json())
+    //            .then(data => {
+    //                // if(!data) setFilter("recommendations")
+    //                console.log(data)
+    //            });
+    //    }
     //
-    // }, [ query ])
+    //
+    // }, [ id ])
 
     // function App() {
     //     const [response, loading, hasError] = useFetch("api/data")
