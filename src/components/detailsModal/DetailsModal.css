@@ -21,6 +21,17 @@
     overflow-y: auto;
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+.details__wrapper > div::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.details__wrapper > div {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
 .details__image {
     width: 100%;
     padding-top: 56.25%;

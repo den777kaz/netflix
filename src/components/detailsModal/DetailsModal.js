@@ -6,12 +6,13 @@ import pauseIcon from '../../assets/images/muteIcon.svg';
 import playIcon from '../../assets/images/unmuteIcon.svg';
 import {connect} from "react-redux";
 import {setMuteGlobal} from "../../redux/reducers/detailsReducer";
+import SimilarContent from "./similarContent/SimilarContent";
 
 
 const DetailsModal = (props) => {
 
     const {video, doClose, isLoading, setMuteGlobal, isMuted} = props;
-    const {overview, credits, genres, title, original_name, poster_path, backdrop_path, release_date, vote_average, homepage, runtime} = props.data;
+    const {overview,id, credits, genres, title, original_name, poster_path, backdrop_path, release_date, vote_average, homepage, runtime} = props.data;
 
     const imageUrlBg = "https://image.tmdb.org/t/p/w1280";
     const imageUrlPoster = "https://image.tmdb.org/t/p/w154";
@@ -26,15 +27,13 @@ const DetailsModal = (props) => {
     }, [muted, setMuteGlobal])
 
     useEffect(() => {
-        getOffTrailel()
+        getOffTrailer()
     }, [video])
-    console.log(video)
-    const getOffTrailel = () => {
+    const getOffTrailer = () => {
         if (video) {
             video.filter(v => {
                 let string = v.name;
                 if (string.includes("Official Trailer")) {
-                    console.log(v.name);
                     setTrailer(v.key)
                 }
             })
@@ -134,13 +133,17 @@ const DetailsModal = (props) => {
                         <p>{overview}</p>
                         <div className={"details__cast"}>
                             <p><span>Cast: </span>
-                                {credits && [...credits.cast].splice(0, 5).map(c => `${c.name}, `)} more
+                                {credits && [...credits.cast].splice(0, 5).map(c => `${c.name}, `)}
+                                <a href="#">more...</a>
                             </p>
                             <p><span className={"cast__genres"}>Genres: </span>
                                 {genres && genres.map(genre => `${genre.name}, `)}
                             </p>
                         </div>
                     </div>
+
+                    {/*similar Movies*/}
+                    <SimilarContent id={id} />
 
                     {/*more Trailers*/}
                     {video &&

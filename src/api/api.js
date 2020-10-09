@@ -7,7 +7,7 @@ import * as axios from "axios";
 // });
 
 const accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ODI2ZmNhZDBmY2I4ZjJjMmEzNTAxODU5ZGFhZTVhNyIsInN1YiI6IjVkMDkxODcwYzNhMzY4NzE4NjFmNDBhMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.7B-P2W3JYaIS2wm0SjNBj-RMnc5KhJ_E0KDHjtPcCzA"
-const apiKey = "?api_key=6826fcad0fcb8f2c2a3501859daae5a7";
+export const apiKey = "?api_key=6826fcad0fcb8f2c2a3501859daae5a7";
 
 
 const configV3 = axios.create({
