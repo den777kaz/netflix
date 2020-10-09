@@ -7,7 +7,7 @@ import {useFetch} from "../../../hooks/useFetch";
 
 const Line = styled.div`
       width: 80%;
-      margin: 0 auto ;
+      margin: 100px auto ;
       border-bottom: 1px solid lightgray;
       position: relative;
       height: 1px;
@@ -34,6 +34,7 @@ const Wrapper = styled.div`
       flex-wrap: wrap;
       width: 100%;
       justify-content: space-between;
+      margin: 40px 0;
     `
 const Card = styled.div`
       flex: 0 0 32%;
