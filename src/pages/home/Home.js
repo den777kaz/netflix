@@ -12,15 +12,14 @@ import {
 import ContentRow from "../../components/ContentRow/ContentRow";
 import Preloader from "../../common/preloader/Preloader";
 import DetailsModal from "../../components/detailsModal/DetailsModal";
-import {getDetails, resetDetails} from "../../redux/reducers/detailsReducer";
+import {getDetails} from "../../redux/reducers/detailsReducer";
 
 
 const Home = (props) => {
     const {
         dayMovies, weekMovies, weekTvs,
         isLoading, genresDataMovie, genresDataTv,
-        details, video, getHomeData,resetTrends,
-        resetDetails, getDetails, isLoadingDetails,detailGenres
+        getHomeData,resetTrends, getDetails,
     } = props;
 
     const [detailsModal, setDetailsModal] = useState(false);
@@ -44,13 +43,6 @@ const Home = (props) => {
         document.body.style.overflowY= "hidden";
     }
 
-    const closeModal = (e) => {
-        if (e.target.classList.contains("details__wrapper")) {
-            document.body.style.overflowY = "";
-            setDetailsModal(false);
-            resetDetails();
-        }
-    }
 
     const movie = dayMovies.filter((item, index) => index === random)
         .map(m => <Hero
@@ -80,11 +72,7 @@ const Home = (props) => {
 
     return <main>
         {detailsModal && <DetailsModal
-            data={details}
-            doClose={closeModal}
             setDetailsModal={setDetailsModal}
-            video={video}
-            isLoading={isLoadingDetails}
         /> }
         {movie}
         {RowTitles.map((row, index) => <ContentRow
@@ -109,12 +97,7 @@ const mapStateToProps = (state) => ({
     isLoading: state.trends.isLoading,
     genresDataMovie: getGenresMovies(state),
     genresDataTv: getGenresTvs(state),
-    details: state.details.details,
-    video: state.details.video,
-    isLoadingDetails: state.details.isLoading,
-
-
 })
 
-export default connect(mapStateToProps, {getHomeData, resetTrends, getDetails, resetDetails})(Home);
+export default connect(mapStateToProps, {getHomeData, resetTrends, getDetails})(Home);
 

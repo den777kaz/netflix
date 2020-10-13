@@ -5,14 +5,14 @@ import ReactPlayer from 'react-player'
 import pauseIcon from '../../assets/images/muteIcon.svg';
 import playIcon from '../../assets/images/unmuteIcon.svg';
 import {connect} from "react-redux";
-import {setMuteGlobal} from "../../redux/reducers/detailsReducer";
+import {resetDetails, setMuteGlobal} from "../../redux/reducers/detailsReducer";
 import SimilarContent from "./similarContent/SimilarContent";
 
 
 const DetailsModal = (props) => {
 
-    const {video, doClose, isLoading, setMuteGlobal, isMuted} = props;
-    const {overview,id, credits, genres, title, original_name, poster_path, backdrop_path, release_date, vote_average, homepage, runtime} = props.data;
+    const {video, setDetailsModal, setMuteGlobal, isMuted} = props;
+    const {overview,id, credits, genres, title, original_name, poster_path, backdrop_path, release_date, vote_average, homepage, runtime} = props.details;
 
     const imageUrlBg = "https://image.tmdb.org/t/p/w1280";
     const imageUrlPoster = "https://image.tmdb.org/t/p/w154";
@@ -22,6 +22,9 @@ const DetailsModal = (props) => {
     const [muted, setMuted] = useState(isMuted);
     const [trailer, setTrailer] = useState(null);
 
+
+    const scrollRef = useRef(null);
+
     useEffect(() => {
         return () => setMuteGlobal(muted)
     }, [muted, setMuteGlobal])
@@ -29,9 +32,21 @@ const DetailsModal = (props) => {
     useEffect(() => {
         getOffTrailer()
     }, [video])
+
+    const listenToScroll = () => {
+        if(scrollRef.current.scrollTop > 100){
+            setOnPlay(false)
+            setHideBg(false)
+        }else if(scrollRef.current.scrollTop === 0 ){
+            setHideBg(true)
+            setOnPlay(true);
+        }
+
+    }
+
     const getOffTrailer = () => {
         if (video) {
-         const videoKeys = video.filter(v => {
+         video.filter(v => {
                 let string = v.name;
                 if (string.includes("Official Trailer")) {
                     setTrailer(v.key);
@@ -40,9 +55,18 @@ const DetailsModal = (props) => {
                     setTrailer(v.key);
                 }
             })
-
-
         }
+    }
+
+    const doClose = (e) => {
+        if (e.target.classList.contains("details__wrapper")) {
+            document.body.style.overflowY = "";
+            setDetailsModal(false);
+        }
+    }
+
+    const handleMute = () => {
+        setMuted(!muted)
     }
 
     const videoStyle = {
@@ -54,17 +78,13 @@ const DetailsModal = (props) => {
         transform: "scale(1.45)"
     };
 
-
-    const handleClick = () => {
-        setMuted(!muted);
-    }
-
     return (
         <motion.div animate={{opacity: [0, 1]}}
                     className={"details__wrapper"}
                     onClick={e => doClose(e)}>
             <motion.div
-                onClick={e => handleClick(e)}
+                onScroll={listenToScroll}
+                ref={scrollRef}
                 animate={{opacity: [0, 1]}}
                 layout
                 exit={{opacity: 0}}
@@ -85,28 +105,28 @@ const DetailsModal = (props) => {
                             muted={muted}
                             width="100%"
                             height="100%"
+                            progressInterval={2000}
                             onStart={() => setHideBg(true)}
                             onEnded={() => setHideBg(false)}
+                            // onPause={setHideBg(true)}
                         />
                     }
 
-                    <div className={"details__buttons"}>
+                    <div
+                        onClick={handleMute}
+                        className={`details__buttons doMute ${hideBg ? "active" : ""}`}>
                         {!muted
                             ? <button
-                                onClick={handleClick}
                                 className={"doPlay"}>
                                 <img src={pauseIcon} alt="play Icon"/>
                             </button>
                             : <button
-                                onClick={handleClick}
                                 className={"doPause"}>
                                 <img src={playIcon} alt="pause icon"/>
                             </button>
                         }
                     </div>
-                    <div className={"details__buttonsWrapper"}>
 
-                    </div>
                     <div className={"detail__imageInfo"}>
                         <div className={`details__imagePoster + ${hideBg ? "small" : ""}`}>
                             <img src={poster_path ? imageUrlPoster + poster_path : ""} alt={title}/>
@@ -125,11 +145,10 @@ const DetailsModal = (props) => {
                 </div>
                 <div className={"detailsDescContainer"}>
                     <div className={"details__smallInfo"}>
-                        <span>{release_date}</span>
-                        <span>{runtime} min</span>
-                        <span className={"smasllInfo__rating"}>Rating <span>{vote_average}</span>/10</span>
-                        {/* eslint-disable-next-line react/jsx-no-target-blank */}
-                        {homepage ? <span><a href={homepage} target="_blank">Website</a></span> : null}
+                        {release_date && <span>{release_date}</span>}
+                        {runtime &&  <span>{runtime} min</span>}
+                        {vote_average && <span className={"smasllInfo__rating"}>IMDB <span>{vote_average}</span>/10</span>}
+                        {homepage ? <span><a href={homepage} target="_blank" rel="noopener noreferrer">Website</a></span> : null}
 
                     </div>
                     <div className={"details__desc"}>
@@ -182,5 +201,8 @@ const DetailsModal = (props) => {
 };
 const mapStateToProps = (state) => ({
     isMuted: state.details.isMuted,
+    video: state.details.video,
+    details: state.details.details,
+    isLoadingDetails: state.details.isLoading,
 })
-export default connect(mapStateToProps, {setMuteGlobal})(DetailsModal);
+export default connect(mapStateToProps, {setMuteGlobal,resetDetails})(DetailsModal);

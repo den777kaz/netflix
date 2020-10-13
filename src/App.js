@@ -14,7 +14,7 @@ import Test from "./components/test";
 import {connect} from "react-redux";
 import {getConfigData} from "./redux/reducers/configDataReducer";
 
-
+// https://developers.themoviedb.org/3/tv-seasons/get-tv-season-details
 
 function App(props) {
     useEffect(() =>{
