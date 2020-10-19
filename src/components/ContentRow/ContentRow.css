@@ -1,96 +1,96 @@
 .contentRow {
-    padding: 10px 4% 10px 4%;
-    position: relative;
-    top: -8vw;
-    /*top: -8vw;*/
+  padding: 10px 4% 10px 4%;
+  position: relative;
+  top: -8vw;
+  /*top: -8vw;*/
 }
 
 .row__box {
-    margin-bottom: 3vw;
+  margin-bottom: 3vw;
 }
 
 .row__box > h3 {
-    font-size: min(2.5vw, 2.1rem);
-    margin-bottom: 1rem;
-    font-weight: 500;
+  font-size: min(2.5vw, 2.1rem);
+  margin-bottom: 1rem;
+  font-weight: 500;
 }
 
 .sliderRow {
-    position: relative;
+  position: relative;
 }
 
-.rec-slider-container, .rec-item-wrapper {
-    overflow: initial !important;
-    border-radius: 10px !important;
+.rec-slider-container,
+.rec-item-wrapper {
+  overflow: initial !important;
+  border-radius: 10px !important;
 }
-.rec-item-wrapper:hover ~ .sliderRow {
-
-}
-
+/* .rec-item-wrapper:hover ~ .sliderRow {
+} */
+/* 
 .iamfxf {
-    /*justify-content: normal !important;*/
-}
+  justify-content: normal !important;
+} */
 
-
-.contentRow .card__maxW {
-    /*min-width: calc(100% - 5px);*/
-    /*padding-right: 5px;*/
-}
-
+/* .contentRow .card__maxW {
+  min-width: calc(100% - 5px);
+  padding-right: 5px;
+} */
 
 /*arrows*/
 .rec-carousel > button {
-    position: absolute;
-    z-index: 20;
-    box-shadow: none;
-    height: 100%;
-    border-radius: 0;
-    width: 5.65%;
-    font-size: 3vw;
-    margin: 0;
+  position: absolute;
+  z-index: 20;
+  box-shadow: none;
+  height: 100%;
+  border-radius: 0;
+  width: 5.65%;
+  font-size: 3vw;
+  margin: 0;
 }
 
 .rec-carousel .rec-arrow-right {
-    right: -5%;
+  right: -5%;
 }
 
 .rec-carousel .rec-arrow-right:hover {
-    background-color: rgba(0, 0, 0, .2);
-    color: lightgray;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: lightgray;
 }
 
-.rec-carousel button[disabled=disabled], button:disabled {
-    display: none;
+.rec-carousel button[disabled='disabled'],
+button:disabled {
+  display: none;
 }
 
 .rec-carousel .rec-arrow-left {
-    left: -5%;
+  left: -5%;
 }
 
-.rec-carousel > button:hover:enabled, .rec-carousel > button:focus:enabled {
-    background-color: rgba(0, 0, 0, 0.5);
+.rec-carousel > button:hover:enabled,
+.rec-carousel > button:focus:enabled {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 /*pagination*/
 .rec-pagination {
-    position: absolute;
-    top: -60px;
-    right: 0;
+  position: absolute;
+  top: -60px;
+  right: 0;
 }
 
 .rec-pagination button {
-    width: 2vw;
-    height: 3px;
-    border-radius: 2px;
-    box-shadow: none;
-    background-color: lightgrey;
+  width: 2vw;
+  height: 3px;
+  border-radius: 2px;
+  box-shadow: none;
+  background-color: lightgrey;
 }
 
 .rec-pagination button:hover {
-    background-color: lightgray;
-    box-shadow: none;
+  background-color: lightgray;
+  box-shadow: none;
 }
 
 .rec-pagination button.rec-dot_active {
-    background-color: red;
+  background-color: red;
 }

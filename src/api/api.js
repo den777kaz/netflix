@@ -10,7 +10,7 @@ const accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ODI2ZmNhZDBmY2I4ZjJjMmEzNT
 export const apiKey = "?api_key=6826fcad0fcb8f2c2a3501859daae5a7";
 
 
-const configV3 = axios.create({
+export const configV3 = axios.create({
     baseURL: 'https://api.themoviedb.org/3/',
     headers: { 'Authorization': 'Bearer ' + accessToken }
 });
