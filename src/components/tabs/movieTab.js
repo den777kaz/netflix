@@ -5,7 +5,6 @@ const MovieTab = ({onClick}) => {
     const tabTitles = [
         {title:"Popular", attr: "popular"},
         {title:"Upcoming", attr: "upcoming"},
-        {title:"Latest", attr: "latest"},
         {title:"Top Rated", attr: "top_rated"},
         {title:"Now Playing", attr: "now_playing"}
     ]

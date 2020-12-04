@@ -9,26 +9,33 @@
 }
 
 .movies-box .card {
-    flex: 0 0 24%;
+    flex: 0 0 18%;
     margin: 0 0 10px 0;
 }
 
 .movie__tab {
     width: 100%;
-    padding: 0 10%;
+    padding: 0 5%;
     display: flex;
+    justify-content: space-around;
     margin-bottom: 40px;
 }
 .movie__tab button {
-    flex: 1;
     margin-right: 1%;
     padding: 3px 3px;
     font-size: 1rem;
     color: white;
     background-color: #141414;
+    border: none;
     border-radius: 10px;
     text-align: center;
+    cursor: pointer;
 }
+
+.movie__tab button:hover {
+    color: lightgray;
+}
+
 .movie__tab button:nth-last-child(1) {
     margin-right: 0;
 }
