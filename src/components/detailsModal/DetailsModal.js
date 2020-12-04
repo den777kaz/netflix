@@ -127,7 +127,10 @@ const DetailsModal = (props) => {
           )}
           <span
             className={'detailsCloseBtn'}
-            onClick={(e) => setDetailsModal(false)}
+            onClick={(e) => {
+              setDetailsModal(false);
+              document.body.style.overflowY = '';
+            }}
           >
             X
           </span>
@@ -168,7 +171,7 @@ const DetailsModal = (props) => {
             {release_date && <span>{release_date}</span>}
             {runtime && <span>{runtime} min</span>}
             {vote_average && (
-              <span className={'smasllInfo__rating'}>
+              <span className={'smallInfo__rating'}>
                 IMDB <span>{vote_average}</span>/10
               </span>
             )}
