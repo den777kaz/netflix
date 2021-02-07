@@ -22,6 +22,8 @@ const Header = (props) => {
   const [inputValue, setInputValue] = useState('');
   const [headerBg, setHeaderBg] = useState(false);
 
+  console.log("paramam",inputValue)
+
   useEffect(() => {
     if (inputValue) {
       props.getSearch(inputValue);
@@ -57,7 +59,10 @@ const Header = (props) => {
       setShowInput(false);
       setInputValue('');
       // props.history.push("/home");
-      props.history.goBack();
+      if(props.location.pathname === "/search") {
+        props.history.goBack();
+      }
+
     }
   };
 

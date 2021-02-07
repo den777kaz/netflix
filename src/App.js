@@ -13,6 +13,7 @@ import Search from "./pages/search/Search";
 import Test from "./components/test";
 import {connect} from "react-redux";
 import {getConfigData} from "./redux/reducers/configDataReducer";
+import Details from "./components/detailsModal/Details";
 
 // https://developers.themoviedb.org/3/tv-seasons/get-tv-season-details
 
@@ -29,6 +30,7 @@ function App(props) {
                     <Route  path={"/home"} render={ ()=> <Home /> }/>
                     <Route  path={"/movies"} render={ ()=> <Movies /> }/>
                     <Route  path={"/search"} render={ ()=> <Search /> }/>
+                    <Route  path={"/details/:id?"} render={ ()=> <Details /> }/>
                     <Route exact path={"/test"} render={ ()=> <Test /> }/>
                 </Switch>
                 {/*<Footer />*/}
